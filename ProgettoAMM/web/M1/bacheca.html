@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Nerdbook - Descrizione</title>
+        <title>Nerdbook</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Fabio Baglione">
@@ -9,43 +9,63 @@
     </head>
     
     <body>
+        <!-- header della pagina -->
         <header>
             <div id="title">
-                <h1>Nerdbook</h1>
+                Nerdbook - Bacheca
             </div>
-            <nav>
-                <ol>
-                    <li><a href="login.html">Login</a></li>
-                </ol>
-            </nav>
         </header>
         
+        <!-- sezione di navigazione -->
+        <nav>
+            <ul>
+                <li><a href="descrizione.html">Descrizione</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        
+        <!-- contenuto della pagina -->
         <div id="divBody">
-            <h2>Cosa è Nerdbook</h2>
-            <div id="sommario">
-                <h3>Sommario</h3>
-                <ol>
-                    <li><a href="#sezioneAChi">A chi è rivolto</a></li>
-                    <li><a href="#sezioneIscriversi">Come iscriversi</a></li>
-                    <li><a href="#sezioneCosto">Quanto costa</a></li>
-                </ol>
+            
+            <!-- sezione dei posts-->
+            <div id="listaPosts">
+                
+                <!-- post senza allegati -->
+                <div>
+                    <div>
+                        <img alt="foto Djanni" src="../img/djanni.jpg">
+                        Djanni
+                    </div>
+                    <div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                </div>
+                
+                <!-- post con immagine -->
+                <div>
+                    <div>
+                        <img alt="foto Scateni" src="../img/scateni.jpg">
+                        Scateni
+                    </div>
+                    <div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Djanni standard.</p>
+                        <img alt="foto post 1" src="../img/gattodjanni.jpg">
+                    </div>
+                </div>
+                
+                <!-- post con link -->
+                <div>
+                    <div>
+                        <img alt="foto Spano" src="../img/spano.jpg">
+                        Spano
+                    </div>
+                    <div>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <a href="http://www.lipsum.com/">Lorem Ipsum</a>
+                    </div>
+                </div>
             </div>
-            <hr />
-            <div id="sezioneAChi">
-                <h3>A chi è rivolto</h3>
-                <p>Nerdbook è rivolto a tutte le persone e animali della facoltà di Cagliari.</p>
-                <p>Tutte le persone possono partecipare ma solo se sono "nerd".</p>
-                <p>Gli animali possono partecipare ma solo se amici degli iscritti, come Djanni.</p>
-            </div>
-            <div id="sezioneIscriversi">
-                <h3>Come iscriversi</h3>
-                <p>Per iscriversi è necessario usare la pagina apposita.</p>
-                <p>Se necessario è possibile contattare l'amministratore e richiedere l'iscrizione.</p>
-            </div>
-            <div id="sezioneCosto">
-                <h3>Quanto costa</h3>
-                <p>Per iscriversi è possibile offrire un contributo che verrà utilizzato per ampliare e mantenere Nerdbook.</p>
-            </div>
+
         </div>
     </body>
 </html>

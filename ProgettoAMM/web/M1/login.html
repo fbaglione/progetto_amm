@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Nerdbook - Login</title>
+        <title>Nerdbook</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Fabio Baglione">
@@ -9,30 +9,37 @@
     </head>
     
     <body>
+        <!-- header della pagina -->
         <header>
             <div id="title">
-                <h1>Nerdbook</h1>
+                Nerdbook - Login
             </div>
-            <nav>
-                <ol>
-                    <li><a href="descrizione.html">Descrizione</a></li>
-                    <li><a href="profilo.html">Profilo</a></li>
-                    <li><a href="bacheca.html">Bacheca</a></li>
-                </ol>
-            </nav>
         </header>
         
+        <!-- sezione di navigazione -->
+        <nav>
+            <ul>
+                <li><a href="descrizione.html">Descrizione</a></li>
+                <li><a href="profilo.html">Profilo</a></li>
+                <li><a href="bacheca.html">Bacheca</a></li>
+            </ul>
+        </nav>
+        
+        <!-- contenuto della pagina -->
         <div id="divBody">
-            <h2>Effettua il login</h2>
-            <form action="" method="post">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" />
-                <br />
-                <label for="pswd">Password</label>
-                <input type="password" name="pswd" id="pswd" />
-                <br />
-                <input type="submit" value="Invia" />
+            <h1>Effettua il login</h1>
+            <form action="servlet.java" method="post">
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" />
+                </div>
+                <div>
+                    <label for="pswd">Password</label>
+                    <input type="password" name="pswd" id="pswd" />
+                </div>
+                <button type="submit">Invia</button>
             </form>
         </div>
+        
     </body>
 </html>
