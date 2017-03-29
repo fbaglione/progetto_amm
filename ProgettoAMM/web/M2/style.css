@@ -2,12 +2,15 @@
     Created on : 28-Mar-2017, 11:50:04
     Author     : Dathriil
 */
+
+/* body */
 body {
-    background-color: #fafafa;
+    background-color: #ffffff;
     color: #212121;
-    font: 13px/24px Roboto, sans-serif;
+    font: 13px/24px "Roboto", sans-serif;
 }
 
+/* titoli */
 h1 {
     font-weight: normal;
     color: #4caf50;
@@ -17,12 +20,89 @@ h1 {
 
 h2 {
     font-weight: normal;
-    font-size: 20px;
+    color: #4caf50;
+    font-size: 24px;
     line-height: 32px;
 }
 
 h3 {
     font-weight: bold;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 24px;
+}
+
+/* links */
+a:link, a:visited{
+    text-decoration: none;
+    color: #4caf50;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+/* elementi form */
+label {
+    color: #757575;
+    font-size: 12px;
+    line-height: 16px;
+}
+label:active, label:focus {
+    color: #4caf50;
+    font-weight: bold;
+}
+label:after{
+    content: '\A';
+    white-space: pre;
+}
+
+textarea {
+    width: 98.5%;
+    font: 13px/20px "Roboto", sans-serif;
+    background: none;
+    border: 0px;
+    border-bottom: 1px solid #bababa;
+    margin-bottom: 16px;
+}
+textarea:focus {
+    outline: none;
+    border-bottom: 1px solid #4caf50;
+}
+
+input {
+    width: 98.5%;
+    font-size: 14px;
+    line-height: 20px;
+    background: none;
+    border: 0px;
+    border-bottom: 1px solid #bababa;
+    margin-bottom: 16px;
+}
+input:focus {
+    outline: none;
+    border-bottom: 1px solid #4caf50;
+}
+
+button {
+    color: #424242;
+    font: 14px/28px "Roboto", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #ffffff;
+    border: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,.05);
+}
+button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    outline: none;
+}
+button:active {
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    outline: none;
+}
+button:focus {
+    outline: none;
 }
