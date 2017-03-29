@@ -57,7 +57,7 @@ label:after{
 }
 
 textarea {
-    width: 98.5%;
+    width: 400px;
     font: 13px/20px "Roboto", sans-serif;
     background: none;
     border: 0px;
@@ -70,7 +70,7 @@ textarea:focus {
 }
 
 input {
-    width: 98.5%;
+    width: 400px;
     font-size: 14px;
     line-height: 20px;
     background: none;
@@ -84,23 +84,24 @@ input:focus {
 }
 
 button {
-    color: #424242;
+    color: #ffffff;
     font: 14px/28px "Roboto", sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #ffffff;
+    background-color: #424242;
     border: 0;
     padding-left: 12px;
     padding-right: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,.05);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 button:hover {
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    background-color: #4caf50;
+    box-shadow: 0 0 10px rgba(0,0,0,.4);
     outline: none;
 }
 button:active {
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
     outline: none;
 }
 button:focus {
