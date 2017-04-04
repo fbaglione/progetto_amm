@@ -3,14 +3,69 @@
     Author     : Dathriil
 */
 
-/* body */
+/* pagina */
 body {
     background-color: #ffffff;
     color: #212121;
     font: 13px/24px "Roboto", sans-serif;
+    margin: 0;
 }
 
-/* titoli */
+#divBody {
+    width: auto;
+    padding: 8px;
+    margin-top: 48px;
+    margin-bottom: 8px;
+}
+
+/* header */
+header{
+    font: 18px/48px "Roboto", sans-serif;
+    color: #ffffff;
+    background-color: #4caf50;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 48px;
+    width: 100%;
+}
+
+.title {
+    float: left;
+    padding-left: 16px;
+}
+
+/* nav */
+nav{
+    float: left;
+}
+
+nav ul, nav li{
+    margin: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav li{
+    width: 100px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 2px dotted #4caf50;
+}
+
+nav li:last-child{
+    border-right: none;
+}
+
+nav li.active{
+    text-decoration: underline;
+}
+
+/* titoli e testo */
 h1 {
     font-weight: normal;
     color: #4caf50;
@@ -29,6 +84,13 @@ h3 {
     font-weight: bold;
     font-size: 16px;
     line-height: 24px;
+}
+
+p {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 /* links */
@@ -57,7 +119,7 @@ label:after{
 }
 
 textarea {
-    width: 400px;
+    width: 300pxpx;
     font: 13px/20px "Roboto", sans-serif;
     background: none;
     border: 0px;
@@ -70,7 +132,7 @@ textarea:focus {
 }
 
 input {
-    width: 400px;
+    width: 300px;
     font-size: 14px;
     line-height: 20px;
     background: none;
@@ -106,4 +168,61 @@ button:active {
 }
 button:focus {
     outline: none;
+}
+
+/* Elementi specifici */
+
+/* login */
+#login {
+    width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* bacheca */
+.frase {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin-bottom: 8px;
+    padding: 8px;
+}
+.frase .autore {
+    display: inline-block;
+    font: 16px/36px "Roboto", sans-serif;
+    font-weight: bold;
+    padding-left: 8px;
+    color: #4caf50;
+}
+.frase .contenuto {
+    display: inline-block;
+    padding-left: 8px;
+}
+
+.post {
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin-bottom: 8px;
+    padding: 8px;
+}
+.post .autore {
+    height: 88px;
+}
+.post .autore .nome {
+    float: left;
+    padding: 16px;
+    font: 16px/36px "Roboto", sans-serif;
+    font-weight: bold;
+}
+.post .autore .profilePic {
+    float: left;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 8px rgba(0,0,0,.3);
+}
+.post .contenuto {
+    border-top: 1px dotted #bababa;
+}
+.post .contenuto img{
+    padding: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
 }
