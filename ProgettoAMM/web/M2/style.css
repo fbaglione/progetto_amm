@@ -12,15 +12,32 @@ body {
 }
 
 #divBody {
-    width: auto;
     padding: 8px;
     margin-top: 48px;
     margin-bottom: 8px;
 }
 
+#divBody .col {
+    float: left;
+}
+
+#divBody .cont {
+    float: left;
+}
+
+/* links */
+a:link, a:visited{
+    text-decoration: none;
+    color: #4caf50;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
 /* header */
 header{
-    font: 18px/48px "Roboto", sans-serif;
+    font: 24px/48px "Roboto", sans-serif;
     color: #ffffff;
     background-color: #4caf50;
     position: fixed;
@@ -28,11 +45,26 @@ header{
     right: 0;
     height: 48px;
     width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 
 .title {
     float: left;
     padding-left: 16px;
+}
+
+.logout {
+    text-align: center;
+    float: right;
+    font: 14px/16px "Roboto", sans-serif;
+    font-style: italic;
+    margin-top: 8px;
+    margin-right: 16px;
+}
+
+.logout a {
+    color: #ffffff;
+    font: 13px/16px "Roboto", sans-serif;
 }
 
 /* nav */
@@ -47,20 +79,22 @@ nav ul, nav li{
 }
 
 nav li{
-    width: 100px;
+    width: 80px;
     text-align: center;
     font-size: 16px;
-    line-height: 24px;
+}
+nav li a:link, nav li a:visited {
+    font: 13px/20px "Roboto", sans-serif;
     color: #ffffff;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-right: 2px dotted #4caf50;
+}
+nav li a:hover {
+    font: 13px/20px "Roboto", sans-serif;
+    color: #ffffff;
 }
 
 nav li:last-child{
     border-right: none;
 }
-
 nav li.active{
     text-decoration: underline;
 }
@@ -93,17 +127,11 @@ p {
     margin-bottom: 4px;
 }
 
-/* links */
-a:link, a:visited{
-    text-decoration: none;
-    color: #4caf50;
-}
-
-a:hover{
-    text-decoration: underline;
-}
-
 /* elementi form */
+form {
+    width: 300px;
+    padding: 8px;
+}
 label {
     color: #757575;
     font-size: 12px;
@@ -119,7 +147,7 @@ label:after{
 }
 
 textarea {
-    width: 300pxpx;
+    width: 300px;
     font: 13px/20px "Roboto", sans-serif;
     background: none;
     border: 0px;
@@ -170,13 +198,27 @@ button:focus {
     outline: none;
 }
 
+button[type=submit] {
+    width: 100%;
+}
+
 /* Elementi specifici */
 
 /* login */
 #login {
-    width: 480px;
+    width: 316px;
+    padding: 4px 16px 16px 16px;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+#login h1:before {
+    content: '';
+    background: url('../img/glasses.png'); 
+    width: 50px;
+    height: 36px;
+    margin-right: 16px; 
+    display: inline-block;
 }
 
 /* bacheca */
@@ -225,4 +267,23 @@ button:focus {
 .post .contenuto img{
     padding: 4px;
     box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+
+/* profilo */
+#profilo .iconaProfilo {
+    text-align: center;
+    vertical-align: middle;
+    width: 92px;
+    height: 92px;
+    float: left;
+    margin-right: 8px;
+}
+#profilo .iconaProfilo img {
+    max-width: 92px;
+    max-height: 92px;
+    border-radius: 64px;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+#profilo form {
+    float: left;
 }

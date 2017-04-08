@@ -13,60 +13,69 @@
     <body>
         <!-- header della pagina -->
         <header>
-            <div id="title">
+            <div class="title">
                 Nerdbook
+            </div>
+            <!-- sezione di navigazione -->
+            <nav>
+                <ul>
+                    <li class="active"><a href="profilo.html">Profilo</a></li>
+                    <li><a href="bacheca.html">Bacheca</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <div class="user">Davide Spano</div>
+                <a href="login.html">Logout</a>
             </div>
         </header>
         
-        <!-- sezione di navigazione -->
-        <nav>
-            <ul>
-                <li><a href="descrizione.html">Descrizione</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-        </nav>
-        
         <!-- contenuto della pagina -->
         <div id="divBody">
-            <h1>Profilo</h1>
-            <form action="servlet.java" method="post">
-                <div>
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" />
+            <div id='profilo'>
+                <h1>Profilo</h1>
+                <div class="iconaProfilo">
+                    <!-- non è una immagina decorativa ma serve all'utente a capire quale immagine usa come avatar -->
+                    <img src="../img/iconaProfilo.png" alt="icona profilo" />
                 </div>
-                
-                <div>
-                    <label for="cognome">Cognome</label>
-                    <input type="text" name="cognome" id="cognome" />
-                </div>
-                
-                <div>
-                    <label for="urlimmagine">Url immagine profilo</label>
-                    <input type="url" name="urlimmagine" id="urlimmagine" />
-                </div>
-                
-                <div>
-                    <label for="frase">Frase di presentazione</label>
-                    <textarea name="frase" id="frase"></textarea>
-                </div>
-                
-                <div>
-                    <label for="nascita">Data di nascita</label>
-                    <input type="date" name="nascita" id="nascita" />
-                </div>
-                
-                <div>
-                    <label for="pswd">Password</label>
-                    <input type="password" name="pswd" id="pswd" />
-                </div>
-                
-                <div>
-                    <label for="pswd2">Conferma password</label>
-                    <input type="password" name="pswd2" id="pswd2" />
-                </div>
-                
-                <button type="submit">Invia</button>
-            </form>
+                <form action="servlet.java" method="post">
+                    <div>
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" />
+                    </div>
+
+                    <div>
+                        <label for="cognome">Cognome</label>
+                        <input type="text" name="cognome" id="cognome" />
+                    </div>
+
+                    <div>
+                        <label for="urlimmagine">Url immagine profilo</label>
+                        <input type="url" name="urlimmagine" id="urlimmagine" />
+                    </div>
+
+                    <div>
+                        <label for="frase">Frase di presentazione</label>
+                        <textarea name="frase" id="frase"></textarea>
+                    </div>
+
+                    <div>
+                        <label for="nascita">Data di nascita</label>
+                        <input type="date" name="nascita" id="nascita" />
+                    </div>
+
+                    <div>
+                        <label for="pswd">Password</label>
+                        <input type="password" name="pswd" id="pswd" />
+                    </div>
+
+                    <div>
+                        <label for="pswd2">Conferma password</label>
+                        <input type="password" name="pswd2" id="pswd2" />
+                    </div>
+
+                    <button type="submit">Invia</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>
