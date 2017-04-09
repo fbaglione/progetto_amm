@@ -291,7 +291,7 @@ nav li.active{
     padding: 8px;
 }
 .post .autore {
-    height: 88px;
+    height: 64px;
 }
 .post .autore .nome {
     float: left;
@@ -301,8 +301,8 @@ nav li.active{
 }
 .post .autore .profilePic {
     float: left;
-    width: 80px;
-    height: 80px;
+    width: 56px;
+    height: 64px;
     box-shadow: 0 0 8px rgba(0,0,0,.3);
 }
 .post .contenuto {
@@ -430,10 +430,5 @@ nav li.active{
     /* Profilo */
     #profilo .iconaProfilo {
         margin-bottom: 16px;
-    }
-    #profilo .iconaProfilo img {
-
-    }
-    #profilo form {
     }
 }
