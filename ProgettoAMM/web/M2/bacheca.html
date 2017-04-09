@@ -11,70 +11,93 @@
     </head>
     
     <body>
-        <!-- header della pagina -->
-        <header>
-            <div class="title">
-                Nerdbook
-            </div>
-            <!-- sezione di navigazione -->
-            <nav>
-                <ul>
-                    <li><a href="profilo.html">Profilo</a></li>
-                    <li class="active"><a href="bacheca.html">Bacheca</a></li>
-                </ul>
-            </nav>
-            <div class="logout">
-                <div class="user">Davide Spano</div>
-                <a href="login.html">Logout</a>
-            </div>
-        </header>
-        
-        <!-- contenuto della pagina -->
-        <div id="divBody">
-            <div class="col">
-                Colonna
-            </div>
-            <div class="cont">
-                <div class="frase">
-                    <div class="autore">Djanni</div>
-                    <div class="contenuto">"Do or do not. There is no try."</div>
+        <div id="pagina">
+            <!-- header della pagina -->
+            <header>
+                <div class="title">
+                    Nerdbook
                 </div>
+                <!-- sezione di navigazione -->
+                <nav>
+                    <ul>
+                        <li><a href="profilo.html">Profilo</a></li>
+                        <li class="active"><a href="bacheca.html">Bacheca</a></li>
+                    </ul>
+                </nav>
+                <div class="logout">
+                    <div class="user">Djanni</div>
+                    <a href="login.html">Logout</a>
+                </div>
+            </header>
 
-                <!-- sezione dei posts-->
-                <div id="listaPosts">
-
-                    <!-- post senza allegati -->
-                    <div class="post">
-                        <div class="autore">
-                            <img class="profilePic" alt="foto Djanni" src="../img/djanni.jpg">
-                            <div class="nome">Djanni</div>
+            <!-- contenuto della pagina -->
+            <div id="divBody">
+                <div class="col">
+                    <div class="submenu">
+                        <!-- le img di questa sezione sono considerate informazioni e non semplici decorazioni
+                             poiché contengono l'immagine della persona o gruppo e consentono di identificarli tramite
+                             tramite una icona anziché solo tramite testo -->
+                        <div class="subtitle persone">Persone</div>
+                        <ul>
+                            <li><img src="../img/scateni.jpg" alt="Scateni" />Riccardo Scateni</li>
+                            <li><img src="../img/spano.jpg" alt="Spano" />Davide Spano</li>
+                            <li><img src="../img/lucio.bmp" alt="Lucio" />Lupo Lucio</li>
+                        </ul>
+                    </div>
+                    <div class="submenu">
+                        <div class="subtitle gruppi">
+                            Gruppi
+                            <a href="#"><img class="iconaFunzione" alt="aggiungi gruppo" src="../img/addGruppo.png" /></a>
                         </div>
-                        <div class="contenuto">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
+                        <ul>
+                            <li><img src="../img/mongolfieristi.png" alt="Scateni" />Mognolfieristi</li>
+                            <li><img src="../img/animali.bmp" alt="Scateni" />Animali</li>
+                        </ul>
+                    </div>
+                    <div class="submenuFooter"></div>
+                </div>
+                <div class="cont">
+                    <div class="frase">
+                        <div class="autore">Djanni</div>
+                        <div class="contenuto">"Do or do not. There is no try."</div>
                     </div>
 
-                    <!-- post con immagine -->
-                    <div class="post">
-                        <div class="autore">
-                            <img class="profilePic" alt="foto Scateni" src="../img/scateni.jpg">
-                            <div class="nome">Scateni</div>
-                        </div>
-                        <div class="contenuto">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Djanni standard.</p>
-                            <img alt="foto post 1" src="../img/gattodjanni.jpg">
-                        </div>
-                    </div>
+                    <!-- sezione dei posts-->
+                    <div id="listaPosts">
 
-                    <!-- post con link -->
-                    <div class="post">
-                        <div class="autore">
-                            <img class="profilePic" alt="foto Spano" src="../img/spano.jpg">
-                            <div class="nome">Spano</div>
+                        <!-- post senza allegati -->
+                        <div class="post">
+                            <div class="autore">
+                                <img class="profilePic" alt="foto Djanni" src="../img/djanni.jpg">
+                                <div class="nome">Djanni</div>
+                            </div>
+                            <div class="contenuto">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            </div>
                         </div>
-                        <div class="contenuto">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <a href="http://www.lipsum.com/">http://www.lipsum.com/</a>
+
+                        <!-- post con immagine -->
+                        <div class="post">
+                            <div class="autore">
+                                <img class="profilePic" alt="foto Scateni" src="../img/scateni.jpg">
+                                <div class="nome">Scateni</div>
+                            </div>
+                            <div class="contenuto">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Djanni standard.</p>
+                                <img alt="foto post 1" src="../img/gattodjanni.jpg">
+                            </div>
+                        </div>
+
+                        <!-- post con link -->
+                        <div class="post">
+                            <div class="autore">
+                                <img class="profilePic" alt="foto Spano" src="../img/spano.jpg">
+                                <div class="nome">Spano</div>
+                            </div>
+                            <div class="contenuto">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <a href="http://www.lipsum.com/">http://www.lipsum.com/</a>
+                            </div>
                         </div>
                     </div>
                 </div>

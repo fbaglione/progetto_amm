@@ -12,27 +12,7 @@ body {
 }
 
 #divBody {
-    padding: 8px;
-    margin-top: 48px;
-    margin-bottom: 8px;
-}
-
-#divBody .col {
-    float: left;
-}
-
-#divBody .cont {
-    float: left;
-}
-
-/* links */
-a:link, a:visited{
-    text-decoration: none;
-    color: #4caf50;
-}
-
-a:hover{
-    text-decoration: underline;
+    margin-top: 56px;
 }
 
 /* header */
@@ -58,44 +38,23 @@ header{
     float: right;
     font: 14px/16px "Roboto", sans-serif;
     font-style: italic;
+    font-weight: bold;
     margin-top: 8px;
     margin-right: 16px;
 }
 
-.logout a {
+.logout a, .logout a:visited, .logout a:hover {
     color: #ffffff;
     font: 13px/16px "Roboto", sans-serif;
 }
 
-/* nav */
-nav{
-    float: left;
+/* links */
+a:link, a:visited{
+    text-decoration: none;
+    color: #4caf50;
 }
 
-nav ul, nav li{
-    margin: 0;
-    list-style-type: none;
-    display: inline-block;
-}
-
-nav li{
-    width: 80px;
-    text-align: center;
-    font-size: 16px;
-}
-nav li a:link, nav li a:visited {
-    font: 13px/20px "Roboto", sans-serif;
-    color: #ffffff;
-}
-nav li a:hover {
-    font: 13px/20px "Roboto", sans-serif;
-    color: #ffffff;
-}
-
-nav li:last-child{
-    border-right: none;
-}
-nav li.active{
+a:hover{
     text-decoration: underline;
 }
 
@@ -202,6 +161,91 @@ button[type=submit] {
     width: 100%;
 }
 
+/* colonna laterale */
+.submenu ul {
+    margin: 0px 0px 8px 0px;
+    padding-left: 8px;
+    list-style: none;
+    font-style: italic;
+    line-height: 26px;
+}
+.submenu ul li img {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    bottom: -8px;
+    border-radius: 26px;
+    margin-right: 6px;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #4caf50;
+    font-weight: bold;
+}
+.subtitle .iconaFunzione {
+    float: right;
+    width: 24px;
+    height: 24px; 
+    position: relative;
+    bottom: -4px;
+}
+
+/* Icone decorative che non forniscono ulteriore informazione */
+.submenu .persone:before {
+    content: '';
+    background: url('../img/persone.png'); 
+    width: 24px;
+    height: 24px; 
+    display: inline-block;
+    position: relative;
+    bottom: -4px;
+    margin-right: 4px;
+}
+.submenu .gruppi:before {
+    content: '';
+    background: url('../img/gruppi.png'); 
+    width: 24px;
+    height: 24px; 
+    display: inline-block;
+    position: relative;
+    bottom: -4px;
+    margin-right: 4px;
+}
+/* nav */
+nav{
+    float: left;
+}
+
+nav ul, nav li{
+    margin: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav li{
+    width: 80px;
+    text-align: center;
+    font-size: 16px;
+}
+nav li a:link, nav li a:visited {
+    font: 13px/20px "Roboto", sans-serif;
+    color: #ffffff;
+}
+nav li a:hover {
+    font: 13px/20px "Roboto", sans-serif;
+    color: #ffffff;
+}
+
+nav li:last-child{
+    border-right: none;
+}
+nav li.active{
+    text-decoration: underline;
+}
+
 /* Elementi specifici */
 
 /* login */
@@ -270,6 +314,9 @@ button[type=submit] {
 }
 
 /* profilo */
+#profilo {
+    margin-left: 4px;
+}
 #profilo .iconaProfilo {
     text-align: center;
     vertical-align: middle;
@@ -286,4 +333,107 @@ button[type=submit] {
 }
 #profilo form {
     float: left;
+}
+
+
+/* responsive design */
+@media only screen and (min-width: 1024px) {
+    
+    /* Pagina */    
+    #pagina {
+        width: 912px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* Colonna laterale */
+    #pagina .col {
+        padding-top: 16px;
+        float: left;
+        width: 20%;
+    }
+    
+    /* Container */
+    #pagina .cont {
+        margin-left: 200px;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1024px) {
+    
+    /* Colonna laterale */
+    #pagina .col {
+        margin-left: 24px;
+        margin-bottom: 24px;
+    }
+    #pagina .col .submenu {
+        width: 180px;
+        margin-right: 24px;
+        float: left;
+    }
+    #pagina .col .submenuFooter {
+        clear: left;
+    }
+    
+    /* Container */    
+    #pagina .cont {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
+ 
+@media only screen and (max-width: 480px) {
+    
+    /* Colonna laterale */
+    #pagina .col {
+        margin-left: 16px;
+        margin-bottom: 16px;
+    }
+    #pagina .col .submenu {
+        width: 180px;
+        float: left;
+    }
+    #pagina .col .submenuFooter {
+        clear: left;
+    }
+
+    /* Container */
+    #pagina .cont {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+    
+    /* Header */
+    header {
+        height: 40px;
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    header nav {
+        width: 100%;
+        height: 28px;
+        line-height: 24px;
+        background-color: #4caf50;
+        position: relative;
+        top: -7px;
+    }
+    
+    header .logout {
+        position: relative;
+        top: -80px;
+        font-size: 11px;
+    }
+    
+    #divBody {
+        margin-top: 76px;
+    }
+    
+    /* Profilo */
+    #profilo .iconaProfilo {
+        margin-bottom: 16px;
+    }
+    #profilo .iconaProfilo img {
+
+    }
+    #profilo form {
+    }
 }
