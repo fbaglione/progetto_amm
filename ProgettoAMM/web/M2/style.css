@@ -186,12 +186,14 @@ button[type=submit] {
     color: #4caf50;
     font-weight: bold;
 }
+
 .subtitle .iconaFunzione {
     float: right;
     width: 24px;
     height: 24px; 
     position: relative;
     bottom: -4px;
+    background: url('../img/addGruppo.png');
 }
 
 /* Icone decorative che non forniscono ulteriore informazione */
