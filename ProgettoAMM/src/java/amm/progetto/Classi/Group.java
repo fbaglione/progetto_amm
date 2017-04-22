@@ -4,10 +4,25 @@ package amm.progetto.Classi;
  *
  * @author DatrhiilPC
  */
-public class Gruppo {
+public class Group {
 
+    private int id;
     private String nome;
     private User admin;
+    
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
     
     /**
      * @return the nome
