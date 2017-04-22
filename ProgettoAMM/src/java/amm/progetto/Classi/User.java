@@ -1,7 +1,7 @@
 package amm.progetto.Classi;
 
 /**
- *
+ * Informazioni di un utente
  * @author DatrhiilPC
  */
 public class User {
@@ -14,84 +14,84 @@ public class User {
     private String password;
 
     /**
-     * @return the id
+     * @return id dell'utente
      */
     public int getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * @param id id dell'utente da settare
      */
     public void setId(int id) {
         this.id = id;
     }
     
     /**
-     * @return the nome
+     * @return nome dell'utente
      */
     public String getNome() {
         return nome;
     }
 
     /**
-     * @param nome the nome to set
+     * @param nome nome dell'utente da settare
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * @return the cognome
+     * @return cognome dell'utente
      */
     public String getCognome() {
         return cognome;
     }
 
     /**
-     * @param cognome the cognome to set
+     * @param cognome cognome dell'utente da settare
      */
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
 
     /**
-     * @return the urlImmagine
+     * @return url dell'immagine profilo
      */
     public String getUrlImmagine() {
         return urlImmagine;
     }
 
     /**
-     * @param urlImmagine the urlImmagine to set
+     * @param urlImmagine url dell'immagine profilo da settare
      */
     public void setUrlImmagine(String urlImmagine) {
         this.urlImmagine = urlImmagine;
     }
 
     /**
-     * @return the dataDiNascita
+     * @return data di nascita dell'utente
      */
     public String getDataDiNascita() {
         return dataDiNascita;
     }
 
     /**
-     * @param dataDiNascita the dataDiNascita to set
+     * @param dataDiNascita data di nascita dell'utente da settare
      */
     public void setDataDiNascita(String dataDiNascita) {
         this.dataDiNascita = dataDiNascita;
     }
 
     /**
-     * @return the password
+     * @return password dell'utente
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * @param password the password to set
+     * @param password password dell'utente da settare
      */
     public void setPassword(String password) {
         this.password = password;

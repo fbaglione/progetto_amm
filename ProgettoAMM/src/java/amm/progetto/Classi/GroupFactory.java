@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Factory dei gruppi
  * @author DatrhiilPC
  */
 public class GroupFactory {
@@ -12,6 +12,10 @@ public class GroupFactory {
     // Pattern Design Singleton
     private static GroupFactory singleton;
 
+    /**
+     * Metodo per l'accesso alla singleton
+     * @return singleton della factory
+     */
     public static GroupFactory getInstance() {
         if (singleton == null) {
             singleton = new GroupFactory();
@@ -26,6 +30,7 @@ public class GroupFactory {
         UserFactory userFactory = UserFactory.getInstance();
 
         // Creazione Group
+        
         Group group1 = new Group();
         group1.setId(0);
         group1.setNome("Mongolfieristi");
@@ -46,6 +51,11 @@ public class GroupFactory {
         listaGroup.add(group3);
     }
 
+    /**
+     * Permette di ottenere il gruppo con id specificato
+     * @param id id del gruppo richiesto
+     * @return Group con id richiesto
+     */
     public Group getGroupById(int id) {
         for (Group group : this.listaGroup) {
             if (group.getId() == id) {
@@ -55,6 +65,12 @@ public class GroupFactory {
         return null;
     }
 
+    /**
+     * Restituisce una lista con i gruppi a cui partecipa
+     * l'user specificato
+     * @param user user richiesto
+     * @return lista con i gruppi dell'user
+     */
     public List getGroupList(User user) {
 
         List<Group> listaGroup = new ArrayList<Group>();

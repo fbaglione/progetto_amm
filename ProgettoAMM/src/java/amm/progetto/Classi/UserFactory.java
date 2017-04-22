@@ -3,7 +3,7 @@ package amm.progetto.Classi;
 import java.util.ArrayList;
 
 /**
- *
+ * Factory degli user
  * @author DatrhiilPC
  */
 public class UserFactory {
@@ -11,6 +11,10 @@ public class UserFactory {
     // Pattern Design Singleton
     private static UserFactory singleton;
 
+    /**
+     * Metodo per l'accesso alla singleton
+     * @return singleton della factory
+     */
     public static UserFactory getInstance() {
         if (singleton == null) {
             singleton = new UserFactory();
@@ -24,7 +28,6 @@ public class UserFactory {
         
         // Creazione utenti
 
-        // Djanni
         User user1 = new User();
         user1.setId(0);
         user1.setNome("Djanni");
@@ -33,7 +36,6 @@ public class UserFactory {
         user1.setPassword("sonodjanni");
         user1.setUrlImmagine("img/djanni_randagio.jpg");
 
-        // Scateni
         User user2 = new User();
         user2.setId(0);
         user2.setNome("Scateni");
@@ -42,7 +44,6 @@ public class UserFactory {
         user2.setPassword("ric61");
         user2.setUrlImmagine("img/djanni_randagio.jpg");
 
-        // Spano
         User user3 = new User();
         user3.setId(0);
         user3.setNome("Davide");
@@ -56,6 +57,11 @@ public class UserFactory {
         listaUser.add(user3);
     }
 
+    /**
+     * Permette di ottenere l'utente con id specificato
+     * @param id dell'utente richiesto
+     * @return User con id richiesto
+     */
     public User getUserById(int id) {
         for (User user : this.listaUser) {
             if (user.getId() == id) {

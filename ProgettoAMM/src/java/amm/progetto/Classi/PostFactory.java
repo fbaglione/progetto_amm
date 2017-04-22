@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- *
+ * Factory dei post
  * @author DatrhiilPC
  */
 public class PostFactory {
@@ -12,6 +12,10 @@ public class PostFactory {
     // Pattern Design Singleton
     private static PostFactory singleton;
 
+    /**
+     * Metodo per l'accesso alla singleton
+     * @return singleton della factory
+     */
     public static PostFactory getInstance() {
         if (singleton == null) {
             singleton = new PostFactory();
@@ -26,6 +30,7 @@ public class PostFactory {
         UserFactory userFactory = UserFactory.getInstance();
 
         // Creazione Post
+        
         Post post1 = new Post();
         post1.setContent("Ciao, miei schiavi. Datemi cibo! Adesso! Miaomiaomiaomiaomiao!");
         post1.setId(0);
@@ -61,6 +66,11 @@ public class PostFactory {
         listaPost.add(post5);
     }
 
+    /**
+     * Permette di ottenere il post con id specificato
+     * @param id id del post richiesto
+     * @return Post con id richiesto
+     */
     public Post getPostById(int id) {
         for (Post post : this.listaPost) {
             if (post.getId() == id) {
@@ -70,6 +80,12 @@ public class PostFactory {
         return null;
     }
 
+    /**
+     * Restituisce una lista con i post di cui l'user
+     * specificato è autore
+     * @param user user richiesto
+     * @return lista con i post dell'user
+     */
     public List getPostList(User user) {
 
         List<Post> listaPost = new ArrayList<Post>();

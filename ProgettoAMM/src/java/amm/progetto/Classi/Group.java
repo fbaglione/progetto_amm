@@ -1,7 +1,7 @@
 package amm.progetto.Classi;
 
 /**
- *
+ * Informazioni di un gruppo
  * @author DatrhiilPC
  */
 public class Group {
@@ -11,42 +11,42 @@ public class Group {
     private User admin;
     
     /**
-     * @return the id
+     * @return id del gruppo
      */
     public int getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * @param id id da settare
      */
     public void setId(int id) {
         this.id = id;
     }
     
     /**
-     * @return the nome
+     * @return nome del gruppo
      */
     public String getNome() {
         return nome;
     }
 
     /**
-     * @param nome the nome to set
+     * @param nome nome da settare
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * @return the admin
+     * @return admin del gruppo
      */
     public User getAdmin() {
         return admin;
     }
 
     /**
-     * @param admin the admin to set
+     * @param admin admin da settare
      */
     public void setAdmin(User admin) {
         this.admin = admin;

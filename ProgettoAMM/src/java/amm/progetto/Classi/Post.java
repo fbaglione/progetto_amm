@@ -6,8 +6,25 @@ package amm.progetto.Classi;
  */
 public class Post {
    
+    /**
+     * Tipologia del post
+     */
     public enum Type {
-        TEXT, IMAGE
+
+        /**
+         * solo testo
+         */
+        TEXT,
+
+        /**
+         * solo immagine
+         */
+        IMAGE,
+        
+        /**
+         * solo link
+         */
+        LINK
     };
 
     private int id;
@@ -15,57 +32,57 @@ public class Post {
     private String content;
     private Type postType;
     
-        /**
-     * @return the id
+    /**
+     * @return id del post
      */
     public int getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * @param id id da settare
      */
     public void setId(int id) {
         this.id = id;
     }
 
     /**
-     * @return the user
+     * @return User autore del post
      */
     public User getUser() {
         return user;
     }
 
     /**
-     * @param user the user to set
+     * @param user User autore da settare
      */
     public void setUser(User user) {
         this.user = user;
     }
 
     /**
-     * @return the content
+     * @return contenuto del post
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * @param content the content to set
+     * @param content contenuto del post
      */
     public void setContent(String content) {
         this.content = content;
     }
 
     /**
-     * @return the postType
+     * @return tipologia del post
      */
     public Type getPostType() {
         return postType;
     }
 
     /**
-     * @param postType the postType to set
+     * @param postType tipologia del post
      */
     public void setPostType(Type postType) {
         this.postType = postType;
