@@ -47,7 +47,7 @@
 
                             <div>
                                 <label for="urlimmagine">Url immagine profilo</label>
-                                <input type="url" name="urlimmagine" id="urlimmagine" value="${user.getUrlImmagine()}" />
+                                <input type="url" name="urlImmagine" id="urlImmagine" value="${user.getUrlImmagine()}" />
                             </div>
 
                             <div>
@@ -57,7 +57,7 @@
 
                             <div>
                                 <label for="nascita">Data di nascita</label>
-                                <input type="date" name="nascita" id="nascita" value="${user.getDataDiNascita()}" />
+                                <input type="date" name="dataDiNascita" id="dataDiNascita" value="${user.getDataDiNascita()}" />
                             </div>
 
                             <div>
@@ -65,6 +65,8 @@
                                 <input type="password" name="pswd" id="pswd" value="${user.getPassword()}" />
                             </div>
 
+                            <input type="hidden" name="userID" value="${user.getId()}" />
+                            
                             <button type="submit">Invia</button>
 
                             <div class="datiAggiornati">${datiAggiornati}</div>

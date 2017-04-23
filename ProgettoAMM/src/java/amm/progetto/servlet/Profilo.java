@@ -56,24 +56,39 @@ public class Profilo extends HttpServlet {
 
             if (request.getParameter("nome") != null) {
 
-                // Submission del form
-                user.setNome((String) request.getParameter("nome"));
-                user.setCognome((String) request.getParameter("cognome"));
-                user.setDataDiNascita((String) request.getParameter("dataDiNascita"));
-                user.setFrase((String) request.getParameter("frase"));
-                user.setPassword((String) request.getParameter("pswd"));
-                user.setUrlImmagine((String) request.getParameter("urlImmagine"));
-
-                request.setAttribute("datiAggiornati", "Dati aggiornati!");
-            } else {
+                // Controllo sicurezza sull'id del richiedente
+                if(((User) request.getAttribute("loggedUser")).getId() == (Integer.parseInt(request.getParameter("userID")))) {
+                
+                    // Submission del form
+                    user.setNome((String) request.getParameter("nome"));
+                    user.setCognome((String) request.getParameter("cognome"));
+                    user.setDataDiNascita((String) request.getParameter("dataDiNascita"));
+                    user.setFrase((String) request.getParameter("frase"));
+                    user.setPassword((String) request.getParameter("pswd"));
+                    user.setUrlImmagine((String) request.getParameter("urlImmagine"));
+                    
+                    // redirect con dati aggiornati
+                    request.setAttribute("datiAggiornati", "Dati aggiornati!");
+                    request.setAttribute("user", user);
+                    request.getRequestDispatcher("profilo.jsp").forward(request, response);
+                }
+                else {
+                    
+                    // Tentativo di modifica di un profilo non proprio
+                    response.getWriter().println("<h1> Accesso Negato! </h1>");
+                    response.getWriter().println("<p>Tentativo di modifica di un profilo non proprio</p>");
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                }
+            }
+            else {
 
                 // Visita profilo utente loggato
                 user = (User) request.getAttribute("loggedUser");
+                request.setAttribute("user", user);
+                request.getRequestDispatcher("profilo.jsp").forward(request, response);
             }
-
-            request.setAttribute("user", user);
-            request.getRequestDispatcher("profilo.jsp").forward(request, response);
-        } else {
+        }
+        else {
 
             // Utente non autenticato
             response.getWriter().println("<h1> Accesso Negato! </h1>");
