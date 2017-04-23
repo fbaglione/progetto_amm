@@ -1,17 +1,36 @@
-<%-- 
-    Document   : login
-    Created on : Apr 22, 2017, 11:34:02 AM
-    Author     : DatrhiilPC
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Nerdbook - Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Fabio Baglione">
+        <meta name="keywords" content="social network nerd">
+
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     </head>
-    <body>
-        <h1>Hello World!</h1>
+
+    <body> 
+        <!-- contenuto della pagina -->
+        <div id="divBody">
+            <div id="login">
+                <h1>Nerdbook</h1>
+                <form action="Login" method="post">
+                    <div>
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" />
+                    </div>
+                    <div>
+                        <label for="pswd">Password</label>
+                        <input type="password" name="pswd" id="pswd" />
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="datiErrati">${datiErrati}</div>
+            </div>
+        </div>
+
     </body>
 </html>

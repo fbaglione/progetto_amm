@@ -11,8 +11,26 @@ public class User {
     private String cognome;
     private String urlImmagine;
     private String dataDiNascita;
+    private String frase;
     private String password;
 
+    /**
+     * @return se l'utente ha tutti i dati del profilo
+     */
+    public boolean profiloCompleto() {
+        
+        if (this.nome != null
+                && this.cognome != null
+                && this.urlImmagine != null
+                && this.dataDiNascita != null
+                && this.frase != null
+                && this.password != null) {
+            return true;
+        }
+
+        return false;
+    }
+    
     /**
      * @return id dell'utente
      */
@@ -83,6 +101,20 @@ public class User {
         this.dataDiNascita = dataDiNascita;
     }
 
+    /**
+     * @return frase di presentazione dell'utente
+     */
+    public String getFrase() {
+        return frase;
+    }
+
+    /**
+     * @param frase frase di presentazione da usare
+     */
+    public void setFrase(String frase) {
+        this.frase = frase;
+    }
+    
     /**
      * @return password dell'utente
      */

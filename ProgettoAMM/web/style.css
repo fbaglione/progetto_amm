@@ -34,21 +34,6 @@ header{
     padding-left: 16px;
 }
 
-.logout {
-    text-align: center;
-    float: right;
-    font: 14px/16px "Roboto", sans-serif;
-    font-style: italic;
-    font-weight: bold;
-    margin-top: 8px;
-    margin-right: 16px;
-}
-
-.logout a, .logout a:visited, .logout a:hover {
-    color: #ffffff;
-    font: 13px/16px "Roboto", sans-serif;
-}
-
 /* links */
 a:link, a:visited{
     text-decoration: none;
@@ -162,6 +147,22 @@ button[type=submit] {
     width: 100%;
 }
 
+/* logout */
+.logout {
+    text-align: center;
+    float: right;
+    font: 14px/16px "Roboto", sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-right: 16px;
+}
+
+.logout a, .logout a:visited, .logout a:hover {
+    color: #ffffff;
+    font: 13px/16px "Roboto", sans-serif;
+}
+
 /* colonna laterale */
 .submenu ul {
     margin: 0px 0px 8px 0px;
@@ -193,13 +194,13 @@ button[type=submit] {
     height: 24px; 
     position: relative;
     bottom: -4px;
-    background: url('../img/addGruppo.png');
+    background: url('img/addGruppo.png');
 }
 
 /* Icone decorative che non forniscono ulteriore informazione */
 .submenu .persone:before {
     content: '';
-    background: url('../img/persone.png'); 
+    background: url('img/persone.png'); 
     width: 24px;
     height: 24px; 
     display: inline-block;
@@ -209,7 +210,7 @@ button[type=submit] {
 }
 .submenu .gruppi:before {
     content: '';
-    background: url('../img/gruppi.png'); 
+    background: url('img/gruppi.png'); 
     width: 24px;
     height: 24px; 
     display: inline-block;
@@ -262,11 +263,16 @@ nav li.active{
 }
 #login h1:before {
     content: '';
-    background: url('../img/glasses.png'); 
+    background: url('img/glasses.png'); 
     width: 50px;
     height: 36px;
     margin-right: 16px; 
     display: inline-block;
+}
+#login .datiErrati {
+    text-align: center;
+    font-style: italic;
+    color: red;
 }
 
 /* bacheca */
@@ -338,25 +344,30 @@ nav li.active{
 #profilo form {
     float: left;
 }
-
+#profilo .datiAggiornati {
+    margin-top: 4px;
+    text-align: center;
+    color: #4caf50;
+    font-style: italic;
+}
 
 /* responsive design */
 @media only screen and (min-width: 1024px) {
-    
+
     /* Pagina */    
     #pagina {
         width: 912px;
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     /* Colonna laterale */
     #pagina .col {
         padding-top: 16px;
         float: left;
         width: 20%;
     }
-    
+
     /* Container */
     #pagina .cont {
         margin-left: 200px;
@@ -364,7 +375,7 @@ nav li.active{
 }
 
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-    
+
     /* Colonna laterale */
     #pagina .col {
         margin-left: 24px;
@@ -378,16 +389,16 @@ nav li.active{
     #pagina .col .submenuFooter {
         clear: left;
     }
-    
+
     /* Container */    
     #pagina .cont {
         margin-left: 16px;
         margin-right: 16px;
     }
 }
- 
+
 @media only screen and (max-width: 480px) {
-    
+
     /* Colonna laterale */
     #pagina .col {
         margin-left: 16px;
@@ -406,7 +417,7 @@ nav li.active{
         margin-left: 4px;
         margin-right: 4px;
     }
-    
+
     /* Header */
     header {
         height: 40px;
@@ -420,17 +431,17 @@ nav li.active{
         position: relative;
         top: -7px;
     }
-    
+
     header .logout {
         position: relative;
         top: -80px;
         font-size: 11px;
     }
-    
+
     #divBody {
         margin-top: 76px;
     }
-    
+
     /* Profilo */
     #profilo .iconaProfilo {
         margin-bottom: 16px;

@@ -32,45 +32,42 @@
                         <h1>Profilo</h1>
                         <div class="iconaProfilo">
                             <!-- non è una immagina decorativa ma serve all'utente a capire quale immagine usa come avatar -->
-                            <img src="../img/iconaProfilo.png" alt="icona profilo" />
+                            <img src="${user.getUrlImmagine()}" alt="icona profilo" />
                         </div>
-                        <form action="servlet.java" method="post">
+                        <form action="Profilo" method="post">
                             <div>
                                 <label for="nome">Nome</label>
-                                <input type="text" name="nome" id="nome" />
+                                <input type="text" name="nome" id="nome" value="${user.getNome()}" />
                             </div>
 
                             <div>
                                 <label for="cognome">Cognome</label>
-                                <input type="text" name="cognome" id="cognome" />
+                                <input type="text" name="cognome" id="cognome" value="${user.getCognome()}" />
                             </div>
 
                             <div>
                                 <label for="urlimmagine">Url immagine profilo</label>
-                                <input type="url" name="urlimmagine" id="urlimmagine" />
+                                <input type="url" name="urlimmagine" id="urlimmagine" value="${user.getUrlImmagine()}" />
                             </div>
 
                             <div>
                                 <label for="frase">Frase di presentazione</label>
-                                <textarea name="frase" id="frase"></textarea>
+                                <textarea name="frase" id="frase">${user.getFrase()}</textarea>
                             </div>
 
                             <div>
                                 <label for="nascita">Data di nascita</label>
-                                <input type="date" name="nascita" id="nascita" />
+                                <input type="date" name="nascita" id="nascita" value="${user.getDataDiNascita()}" />
                             </div>
 
                             <div>
                                 <label for="pswd">Password</label>
-                                <input type="password" name="pswd" id="pswd" />
-                            </div>
-
-                            <div>
-                                <label for="pswd2">Conferma password</label>
-                                <input type="password" name="pswd2" id="pswd2" />
+                                <input type="password" name="pswd" id="pswd" value="${user.getPassword()}" />
                             </div>
 
                             <button type="submit">Invia</button>
+
+                            <div class="datiAggiornati">${datiAggiornati}</div>
                         </form>
                     </div>
                 </div>

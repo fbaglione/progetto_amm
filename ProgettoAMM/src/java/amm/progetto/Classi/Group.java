@@ -8,6 +8,7 @@ public class Group {
 
     private int id;
     private String nome;
+    private String urlImmagine;
     private User admin;
     
     /**
@@ -50,5 +51,19 @@ public class Group {
      */
     public void setAdmin(User admin) {
         this.admin = admin;
+    }
+
+    /**
+     * @return url dell'immagine del gruppo
+     */
+    public String getUrlImmagine() {
+        return urlImmagine;
+    }
+
+    /**
+     * @param urlImmagine url dell'immagine del gruppo da settare
+     */
+    public void setUrlImmagine(String urlImmagine) {
+        this.urlImmagine = urlImmagine;
     }
 }

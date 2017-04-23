@@ -32,42 +32,61 @@ public class UserFactory {
         user1.setId(0);
         user1.setNome("Djanni");
         user1.setCognome("Randagio");
-        user1.setDataDiNascita("01/01/2011");
+        user1.setDataDiNascita("2011-01-01");
         user1.setPassword("sonodjanni");
+        user1.setFrase("Datemi cibo! Miao...");        
         user1.setUrlImmagine("img/djanni_randagio.jpg");
-
+        //user1.setUrlImmagine("http://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/17818566_1876586082610013_8501213461156462592_n.jpg?ig_cache_key=MTQ5MDUyNzkyOTk4NTY0MDk5OA%3D%3D.2");
+        
         User user2 = new User();
-        user2.setId(0);
+        user2.setId(1);
         user2.setNome("Scateni");
         user2.setCognome("Riccardi");
-        user2.setDataDiNascita("06/11/1961");
+        user2.setDataDiNascita("1961-11-06");
         user2.setPassword("ric61");
-        user2.setUrlImmagine("img/djanni_randagio.jpg");
+        user2.setFrase("W Oculus Rift!"); 
+        user2.setUrlImmagine("img/scateni.jpg");
 
         User user3 = new User();
-        user3.setId(0);
+        user3.setId(2);
         user3.setNome("Davide");
         user3.setCognome("Spano");
-        user3.setDataDiNascita("01/01/2011");
+        user3.setDataDiNascita("2011-01-11");
         user3.setPassword("ammprogetto");
-        user3.setUrlImmagine("img/davide_spano.jpg");
+        user3.setFrase("Do or do not. There is no try.");
+        user3.setUrlImmagine("img/spano.jpg");
 
+        User user4 = new User();
+        user4.setId(3);
+        user4.setNome("incompleto");
+        user4.setPassword("incompleto");
+        
         listaUser.add(user1);
         listaUser.add(user2);
         listaUser.add(user3);
+        listaUser.add(user4);
     }
 
+
+    
     /**
      * Permette di ottenere l'utente con id specificato
      * @param id dell'utente richiesto
      * @return User con id richiesto
      */
     public User getUserById(int id) {
-        for (User user : this.listaUser) {
+        for (User user : this.getListaUser()) {
             if (user.getId() == id) {
                 return user;
             }
         }
         return null;
+    }
+
+    /**
+     * @return lista degli utenti del sistema
+     */
+    public ArrayList<User> getListaUser() {
+        return listaUser;
     }
 }

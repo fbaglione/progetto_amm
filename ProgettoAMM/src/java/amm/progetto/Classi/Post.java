@@ -17,12 +17,12 @@ public class Post {
         TEXT,
 
         /**
-         * solo immagine
+         * con immagine
          */
         IMAGE,
         
         /**
-         * solo link
+         * con link
          */
         LINK
     };
@@ -30,6 +30,7 @@ public class Post {
     private int id;
     private User user;
     private String content;
+    private String text;
     private Type postType;
     
     /**
@@ -86,5 +87,19 @@ public class Post {
      */
     public void setPostType(Type postType) {
         this.postType = postType;
+    }
+
+    /**
+     * @return testo del post
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * @param text testo del post da settare
+     */
+    public void setText(String text) {
+        this.text = text;
     }
 }

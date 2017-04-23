@@ -34,16 +34,19 @@ public class GroupFactory {
         Group group1 = new Group();
         group1.setId(0);
         group1.setNome("Mongolfieristi");
+        group1.setUrlImmagine("img/mongolfieristi.png");
         group1.setAdmin(userFactory.getUserById(0));
         
         Group group2 = new Group();
         group2.setId(1);
         group2.setNome("Professori");
+        group2.setUrlImmagine("img/lucio.bmp");
         group2.setAdmin(userFactory.getUserById(2));
         
         Group group3 = new Group();
-        group3.setId(0);
+        group3.setId(2);
         group3.setNome("Animali");
+        group3.setUrlImmagine("img/gattodjanni.jpg");
         group3.setAdmin(userFactory.getUserById(0));
         
         listaGroup.add(group1);
@@ -57,7 +60,7 @@ public class GroupFactory {
      * @return Group con id richiesto
      */
     public Group getGroupById(int id) {
-        for (Group group : this.listaGroup) {
+        for (Group group : this.getListaGroup()) {
             if (group.getId() == id) {
                 return group;
             }
@@ -75,11 +78,20 @@ public class GroupFactory {
 
         List<Group> listaGroup = new ArrayList<Group>();
 
-        for (Group group : this.listaGroup) {
+        for (Group group : this.getListaGroup()) {
             if (group.getAdmin().equals(user)) {
                 listaGroup.add(group);
             }
         }
         return listaGroup;
     }
+
+    /**
+     * @return lista dei gruppi nel sistema
+     */
+    public ArrayList<Group> getListaGroup() {
+        return listaGroup;
+    }
+    
+    
 }

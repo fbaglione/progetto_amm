@@ -7,9 +7,12 @@
              tramite una icona anziché solo tramite testo -->
         <div class="subtitle persone">Persone</div>
         <ul>
-            <li><img src="img/scateni.jpg" alt="Scateni" />Riccardo Scateni</li>
-            <li><img src="img/spano.jpg" alt="Spano" />Davide Spano</li>
-            <li><img src="img/lucio.bmp" alt="Lucio" />Lupo Lucio</li>
+            <c:forEach var="user" items="${users}">
+                <li>
+                    <img src="${user.getUrlImmagine()}" alt="foto ${user.getNome()} ${user.getCognome()}" />
+                    <a href="Bacheca?user=${user.getId()}">${user.getNome()} ${user.getCognome()}</a>
+                </li>
+            </c:forEach>
         </ul>
     </div>
     <div class="submenu">
@@ -18,8 +21,12 @@
             <a class="iconaFunzione add" href="#"></a>
         </div>
         <ul>
-            <li><img src="img/mongolfieristi.png" alt="Scateni" />Mognolfieristi</li>
-            <li><img src="img/animali.bmp" alt="Scateni" />Animali</li>
+            <c:forEach var="group" items="${groups}">
+                <li>
+                    <img src="${group.getUrlImmagine()}" alt="foto ${group.getNome()}" />
+                    <a href="#Group?group=${group.getId()}">${group.getNome()}</a>
+                </li>
+            </c:forEach>
         </ul>
     </div>
     <div class="submenuFooter"></div>

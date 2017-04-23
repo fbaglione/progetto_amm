@@ -29,47 +29,34 @@
                 <!-- contenuto principale -->
                 <div class="cont">
                     <div class="frase">
-                        <div class="autore">Djanni</div>
-                        <div class="contenuto">"Do or do not. There is no try."</div>
+                        <div class="autore">${user.getNome()} ${user.getCognome()}</div>
+                        <div class="contenuto">"${user.getFrase()}"</div>
                     </div>
 
                     <!-- sezione dei posts-->
                     <div id="listaPosts">
 
-                        <!-- post senza allegati -->
-                        <div class="post">
-                            <div class="autore">
-                                <img class="profilePic" alt="foto Lucio" src="../img/lucio.bmp">
-                                <div class="nome">Lupo Lucio</div>
+                        <c:forEach var="post" items="${posts}">
+                            <div class="post">
+                                <div class="autore">
+                                    <img class="profilePic" alt="foto ${user.getNome()} ${user.getCognome()}" src="${user.getUrlImmagine()}">
+                                    <div class="nome">${user.getNome()} ${user.getCognome()}</div>
+                                </div>
+                                <div class="contenuto">
+                                    <c:if test="${post.postType == 'TEXT'}">
+                                        <p>${post.text}</p>
+                                    </c:if>
+                                    <c:if test="${post.postType == 'IMAGE'}">
+                                        <p>${post.text}</p>
+                                        <img alt="Post con foto" src="${post.content}">
+                                    </c:if>
+                                    <c:if test="${post.postType == 'LINK'}">
+                                        <p>${post.text}</p>
+                                        <a href="${post.content}">${post.content}</a>
+                                    </c:if>
+                                </div>
                             </div>
-                            <div class="contenuto">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non nisi volutpat, imperdiet ante vitae, dignissim dui. Aliquam imperdiet tristique mauris, vitae consequat massa consequat et. Nullam convallis, felis vitae semper luctus, mauris orci efficitur nisi, ac placerat augue arcu sit amet erat. Ut placerat at orci ac semper. Praesent sed iaculis nisi, sit amet accumsan erat. Phasellus quis porta eros. Praesent lobortis mauris ullamcorper, vestibulum tortor quis, pretium nunc. Nulla facilisi. Curabitur condimentum magna odio. Sed lacinia leo feugiat, tempus augue id, ornare nunc.</p>
-                            </div>
-                        </div>
-
-                        <!-- post con immagine -->
-                        <div class="post">
-                            <div class="autore">
-                                <img class="profilePic" alt="foto Scateni" src="../img/scateni.jpg">
-                                <div class="nome">Riccardo Scateni</div>
-                            </div>
-                            <div class="contenuto">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Djanni standard.</p>
-                                <img alt="foto post 1" src="../img/gattodjanni.jpg">
-                            </div>
-                        </div>
-
-                        <!-- post con link -->
-                        <div class="post">
-                            <div class="autore">
-                                <img class="profilePic" alt="foto Spano" src="../img/spano.jpg">
-                                <div class="nome">Davide Spano</div>
-                            </div>
-                            <div class="contenuto">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                <a href="http://www.lipsum.com/">http://www.lipsum.com/</a>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
