@@ -32,7 +32,11 @@
                         <div class="autore">${user.getNome()} ${user.getCognome()}</div>
                         <div class="contenuto">"${user.getFrase()}"</div>
                     </div>
-
+                    
+                    <div class="nuovoPost">
+                        <jsp:include page="nuovoPost.jsp"/>
+                    </div>
+                    
                     <!-- sezione dei posts-->
                     <div id="listaPosts">
 
