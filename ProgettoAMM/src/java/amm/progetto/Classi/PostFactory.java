@@ -51,9 +51,17 @@ public class PostFactory {
         post3.setText("Ecco un ottimo sito per generare 'dummy text'.");
         post3.setContent("http://www.lipsum.com/");
 
+        Post post4 = new Post();
+        post4.setId(3);
+        post4.setUser(userFactory.getUserById(0));
+        post4.setPostType(Post.Type.IMAGE);
+        post4.setText("W i gatti.");
+        post4.setContent("https://d4n5pyzr6ibrc.cloudfront.net/media/27FB7F0C-9885-42A6-9E0C19C35242B5AC/4785B1C2-8734-405D-96DC23A6A32F256B/thul-90efb785-97af-5e51-94cf-503fc81b6940.jpg?response-content-disposition=inline");
+        
         listaPost.add(post1);
         listaPost.add(post2);
         listaPost.add(post3);
+        listaPost.add(post4);
     }
 
     /**

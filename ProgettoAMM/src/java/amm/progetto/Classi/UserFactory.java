@@ -40,8 +40,8 @@ public class UserFactory {
         
         User user2 = new User();
         user2.setId(1);
-        user2.setNome("Scateni");
-        user2.setCognome("Riccardi");
+        user2.setNome("Riccardo");
+        user2.setCognome("Scateni");
         user2.setDataDiNascita("1961-11-06");
         user2.setPassword("ric61");
         user2.setFrase("W Oculus Rift!"); 

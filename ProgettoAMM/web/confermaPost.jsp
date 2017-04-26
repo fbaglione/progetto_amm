@@ -25,12 +25,36 @@
 
                 <!-- contenuto principale -->
                 <div class="cont">
-                    <div id='confermaPost'>
-                        <h1>Conferma post</h1>
-                        <h2>Mittente</h2>
-                        <p>Nerdbook è rivolto a tutte le persone e animali della facoltà di Cagliari.</p>
-                        <h2>Proprietario bacheca</h2>
-                        <p>Tutte le persone possono partecipare ma solo se sono "nerd".</p>
+                    <div class="nuovoPost">
+                        <div class="datiUtenti">
+                            Post sulla bacheca di ${user.getNome()} ${user.getCognome()}
+                        </div>
+                        <form action="NuovoPost" method="post">
+                            <div>
+                                <div class="label">Autore</div>
+                                <div class="content">${post.getUser().getNome()} ${post.getUser().getCognome()}</div>
+                            </div>
+                            <div>
+                                <div class="label">Testo del post</div>
+                                <div class="content">${post.getText()}</div>
+                            </div>
+                            <div>
+                                <div class="label">Allegato (opzionale)</div>
+                                <div class="content">${post.getContent()}</div>
+                            </div>
+                            <div class="label">Tipologia</div>
+                            <div class="content">${post.getPostType()}</div>
+
+                            <input type="hidden" name="testoPost" value="${post.getText()}" />
+                            <input type="hidden" name="allegatoPost" value="${post.getContent()}"/>
+                            <input type="hidden" name="tipologiaPost" value="${post.getPostType()}" />
+                            <input type="hidden" name="autore" value="${post.getUser().getId()}" />
+                            <input type="hidden" name="userID" value="${user.getId()}" />
+                            <input type="hidden" name="conferma" value="true" />
+
+                            <button type="submit">Conferma post</button>
+                        </form>
+                        <div class="datiAggiornati">${confermaInvio}</div>
                     </div>
                 </div>
             </div>

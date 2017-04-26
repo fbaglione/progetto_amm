@@ -49,20 +49,36 @@ public class NuovoPost extends HttpServlet {
             // Controllo sicurezza
             // se l'autore del post non è lo stesso di quello loggato attualmente
             // blocca l'invio
-            if(((User) request.getAttribute("loggedUser")).getId() == Integer.parseInt(request.getParameter("mittente"))) {
+            if(((User) request.getAttribute("loggedUser")).getId() == Integer.parseInt(request.getParameter("autore"))) {
                 
                 // Utente autorizzato all'invio
                 
-                // Popolamento dati del post
-                User mittente = UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("mittente")));
+                // Popolamento dati del post e dell'autore
+                User user = UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("userID")));
+                
                 Post post = new Post();
                 post.setContent((String) request.getParameter("allegatoPost"));
                 post.setText((String) request.getParameter("testoPost"));
-                post.setUser(UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("userID"))));
+                post.setUser(UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("autore"))));
                 post.setPostType(Post.Type.valueOf((String) request.getParameter("tipologiaPost")));
 
-                // Redirect pagina di conferma
-                request.getRequestDispatcher("confermaPost.jsp").forward(request, response);
+                request.setAttribute("post", post);
+                request.setAttribute("user", user);
+                
+                // Pagina di conferma
+                if(request.getParameter("conferma") == null) {
+                
+                    // Redirect pagina di conferma
+                    request.getRequestDispatcher("confermaPost.jsp").forward(request, response);
+                }
+                else {
+                    
+                    // Invio effettivo del post
+                    request.setAttribute("confermaInvio", "Hai scritto sulla bacheca di " + user.getNome() + " " + user.getCognome());
+                    
+                    // Redirect pagina di conferma
+                    request.getRequestDispatcher("confermaPost.jsp").forward(request, response);
+                }
             }
             else {
                             
