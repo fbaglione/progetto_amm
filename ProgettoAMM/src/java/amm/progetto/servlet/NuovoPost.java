@@ -48,7 +48,6 @@ public class NuovoPost extends HttpServlet {
             
             // Controllo sicurezza
             // se l'autore del post non è lo stesso di quello loggato attualmente
-            // blocca l'invio
             if(((User) request.getAttribute("loggedUser")).getId() == Integer.parseInt(request.getParameter("autore"))) {
                 
                 // Utente autorizzato all'invio
@@ -68,22 +67,22 @@ public class NuovoPost extends HttpServlet {
                 // Pagina di conferma
                 if(request.getParameter("conferma") == null) {
                 
-                    // Redirect pagina di conferma
+                    // redirect pagina di conferma
                     request.getRequestDispatcher("confermaPost.jsp").forward(request, response);
                 }
                 else {
                     
-                    // Invio effettivo del post
+                    // invio effettivo del post
                     request.setAttribute("confermaInvio", "Hai scritto sulla bacheca di " + user.getNome() + " " + user.getCognome());
                     
-                    // Redirect pagina di conferma
+                    // redirect pagina di conferma
                     request.getRequestDispatcher("confermaPost.jsp").forward(request, response);
                 }
             }
             else {
                             
                 // Sovrapposizione tra una nuova sessione ed una pagina
-                // di una vecchia session
+                // di una vecchia sessione
                 response.getWriter().println("<h1> Accesso Negato! </h1>");
                 response.getWriter().println("Si sta tentando di inviare un post preparato da un utente precedentemente loggato.");
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);

@@ -3,11 +3,11 @@
 <form action="NuovoPost" method="post">
     <div>
         <label for="testoPost">Testo del post</label>
-        <textarea name="testoPost"></textarea>
+        <textarea name="testoPost" id="testoPost"></textarea>
     </div>
     <div>
         <label for="allegatoPost">Allegato (opzionale)</label>
-        <input type="text" name="allegatoPost" />
+        <input type="text" name="allegatoPost" id="allegatoPost" />
     </div>
     <div>
         <input type="radio" name="tipologiaPost" value="TEXT" checked="checked" /> Testo

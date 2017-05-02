@@ -7,6 +7,7 @@ package amm.progetto.Classi;
 public class User {
 
     private int id;
+    private String username;
     private String nome;
     private String cognome;
     private String urlImmagine;
@@ -127,5 +128,19 @@ public class User {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return username dell'utente
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username da usare
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

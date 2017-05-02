@@ -81,18 +81,24 @@ public class Login extends HttpServlet {
                 else {
 
                     // dati errati
-                    request.setAttribute("datiErrati", "Dati errati, riprovare!");
+                    request.setAttribute("datiErrati", true);
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             }
         }
     }
-
+    
+    /**
+     * Permette di ottenere l'utente con username e password specificati
+     * @param username username dell'utente richiesto
+     * @param password password dell'utente richiesto
+     * @return User dell'utente
+     */
     private User login(String username, String password) {
 
         for (User user : UserFactory.getInstance().getListaUser()) {
 
-            if (user.getNome().equals(username)) {
+            if (user.getUsername().equals(username)) {
                 if (user.getPassword().equals(password)) {
                     return user;
                 }

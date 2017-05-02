@@ -42,7 +42,7 @@ public class PostFactory {
         post2.setUser(userFactory.getUserById(1));
         post2.setPostType(Post.Type.IMAGE);
         post2.setText("Il miglior gatto al mondo.");
-        post2.setContent("img/gattodjanni.jpg");
+        post2.setContent("http://scontent.cdninstagram.com/t51.2885-15/s750x750/sh0.08/e35/18014025_292883181123886_5187515530797383680_n.jpg?ig_cache_key=MTUwMjE2Njg3MzE1MjAyNjU5Mg%3D%3D.2");
 
         Post post3 = new Post();
         post3.setId(2);

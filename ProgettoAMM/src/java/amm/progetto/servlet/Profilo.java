@@ -52,11 +52,14 @@ public class Profilo extends HttpServlet {
             // Utente autenticato
             request.setAttribute("loggedUser", (User) UserFactory.getInstance().getUserById((int) session.getAttribute("userID")));
 
+            // utente del profilo
             User user = new User();
 
+            // Submission del form
             if (request.getParameter("nome") != null) {
 
                 // Controllo sicurezza sull'id del richiedente
+                // check se l'utente che tenta di modificare il profilo è quello loggato
                 if(((User) request.getAttribute("loggedUser")).getId() == (Integer.parseInt(request.getParameter("userID")))) {
                 
                     // Submission del form
@@ -68,7 +71,7 @@ public class Profilo extends HttpServlet {
                     user.setUrlImmagine((String) request.getParameter("urlImmagine"));
                     
                     // redirect con dati aggiornati
-                    request.setAttribute("datiAggiornati", "Dati aggiornati!");
+                    request.setAttribute("datiAggiornati", true);
                     request.setAttribute("user", user);
                     request.getRequestDispatcher("profilo.jsp").forward(request, response);
                 }

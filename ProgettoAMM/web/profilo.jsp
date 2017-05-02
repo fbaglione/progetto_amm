@@ -46,7 +46,7 @@
                             </div>
 
                             <div>
-                                <label for="urlimmagine">Url immagine profilo</label>
+                                <label for="urlImmagine">Url immagine profilo</label>
                                 <input type="url" name="urlImmagine" id="urlImmagine" value="${user.getUrlImmagine()}" />
                             </div>
 
@@ -56,7 +56,7 @@
                             </div>
 
                             <div>
-                                <label for="nascita">Data di nascita</label>
+                                <label for="dataDiNascita">Data di nascita</label>
                                 <input type="date" name="dataDiNascita" id="dataDiNascita" value="${user.getDataDiNascita()}" />
                             </div>
 
@@ -69,7 +69,9 @@
                             
                             <button type="submit">Invia</button>
 
-                            <div class="datiAggiornati">${datiAggiornati}</div>
+                            <c:if test="${datiAggiornati != null && datiAggiornati}">
+                                <div class="datiAggiornati">Dati aggiornati!</div>
+                            </c:if>
                         </form>
                     </div>
                 </div>

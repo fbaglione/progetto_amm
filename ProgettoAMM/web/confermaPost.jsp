@@ -54,7 +54,9 @@
 
                             <button type="submit">Conferma post</button>
                         </form>
-                        <div class="datiAggiornati">${confermaInvio}</div>
+                            <c:if test="${confermaInvio != null}">
+                                <div class="datiAggiornati">${confermaInvio}</div>
+                            </c:if>
                     </div>
                 </div>
             </div>

@@ -28,7 +28,9 @@
                     </div>
                     <button type="submit">Login</button>
                 </form>
-                <div class="datiErrati">${datiErrati}</div>
+                <c:if test="${datiErrati != null && datiErrati}">
+                    <div class="datiErrati">Dati errati, riprovare!</div>
+                </c:if>
             </div>
         </div>
 
