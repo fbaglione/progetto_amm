@@ -8,6 +8,9 @@ import java.util.ArrayList;
  */
 public class UserFactory {
 
+    // Stringa per la connessione
+    private String connectionString;
+    
     // Pattern Design Singleton
     private static UserFactory singleton;
 
@@ -71,8 +74,6 @@ public class UserFactory {
         listaUser.add(user4);
     }
 
-
-    
     /**
      * Permette di ottenere l'utente con id specificato
      * @param id dell'utente richiesto
@@ -92,5 +93,19 @@ public class UserFactory {
      */
     public ArrayList<User> getListaUser() {
         return listaUser;
+    }
+
+    /**
+     * @return connectionString
+     */
+    public String getConnectionString() {
+        return connectionString;
+    }
+
+    /**
+     * @param connectionString connectionString da settare
+     */
+    public void setConnectionString(String connectionString) {
+        this.connectionString = connectionString;
     }
 }

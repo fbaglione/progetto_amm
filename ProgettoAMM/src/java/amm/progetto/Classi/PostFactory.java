@@ -9,6 +9,9 @@ import java.util.ArrayList;
  */
 public class PostFactory {
 
+    // Stringa per la connessione
+    private String connectionString;
+    
     // Pattern Design Singleton
     private static PostFactory singleton;
 
@@ -95,4 +98,19 @@ public class PostFactory {
         }
         return listaPost;
     }
+
+    /**
+     * @return connectionString
+     */
+    public String getConnectionString() {
+        return connectionString;
+    }
+
+    /**
+     * @param connectionString connectionString da settare
+     */
+    public void setConnectionString(String connectionString) {
+        this.connectionString = connectionString;
+    }
 }
+

@@ -8,7 +8,10 @@ package amm.progetto.servlet;
 import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +21,29 @@ import javax.servlet.http.HttpSession;
  *
  * @author DatrhiilPC
  */
+@WebServlet(loadOnStartup = 0)
 public class Login extends HttpServlet {
+
+    // Variabili banca dati
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+
+    @Override
+    public void init() {
+
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+
+        // Controllo presenza libreria per JDBC
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Inizilizzazione factory
+        //ObjectFactory.getInstance().setConnectionString(dbConnection);
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,31 +66,28 @@ public class Login extends HttpServlet {
 
             // Utente autenticato
             request.setAttribute("loggedUser", (User) UserFactory.getInstance().getUserById((int) session.getAttribute("userID")));
-            
+
             if (((User) request.getAttribute("loggedUser")).profiloCompleto()) {
-                
+
                 // redirect sulla bacheca
                 request.getRequestDispatcher("Bacheca").forward(request, response);
-            }
-            else {
-                
+            } else {
+
                 // redirect sulla pagina profilo
                 request.getRequestDispatcher("Profilo").forward(request, response);
             }
         } else {
 
             // Utente non autenticato 
-            
             // recupero dei dati di login dal form
             String username = request.getParameter("username");
             String password = request.getParameter("pswd");
 
             if (username == null && password == null) {
-                
+
                 // form di login
                 request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-            else {
+            } else {
 
                 // tentativo di login
                 User userLogged = this.login(username, password);
@@ -77,8 +99,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("userID", userLogged.getId());
                     request.getRequestDispatcher("Login").forward(request, response);
-                }
-                else {
+                } else {
 
                     // dati errati
                     request.setAttribute("datiErrati", true);
@@ -87,9 +108,10 @@ public class Login extends HttpServlet {
             }
         }
     }
-    
+
     /**
      * Permette di ottenere l'utente con username e password specificati
+     *
      * @param username username dell'utente richiesto
      * @param password password dell'utente richiesto
      * @return User dell'utente
