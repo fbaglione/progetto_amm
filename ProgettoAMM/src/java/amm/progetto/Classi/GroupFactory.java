@@ -8,6 +8,9 @@ import java.util.List;
  * @author DatrhiilPC
  */
 public class GroupFactory {
+
+    // Stringa per la connessione
+    private String connectionString;
     
     // Pattern Design Singleton
     private static GroupFactory singleton;
@@ -92,6 +95,18 @@ public class GroupFactory {
     public ArrayList<Group> getListaGroup() {
         return listaGroup;
     }
-    
-    
+
+    /**
+     * @return connectionString
+     */
+    public String getConnectionString() {
+        return connectionString;
+    }
+
+    /**
+     * @param connectionString connectionString da settare
+     */
+    public void setConnectionString(String connectionString) {
+        this.connectionString = connectionString;
+    }
 }
