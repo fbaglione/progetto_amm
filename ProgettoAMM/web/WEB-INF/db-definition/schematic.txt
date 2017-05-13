@@ -1,0 +1,51 @@
+- users
+    id              integer                 primary key, auto increment
+    username        string (64)             unique
+    password        string (256)            not null
+    nome            string (64)
+    cognome         string (64)
+    dataDiNascita   date
+    frase           string (1024)
+    urlImmagine     string (2083)
+
+-postType
+    id              integer                 primary key, auto increment
+    nome            string (64)             unique
+
+- posts
+    id              integer                 primary key, auto increment
+    postType        integer                 not null
+    autore          integer                 not null
+    text            string (30000)
+    content         string (2083)
+    bacheca_user    integer
+    bacheca_gruppo  integer
+
+    foreign key postType -> postType.id     uno a molti (posts - postType)
+    foreign key autore -> users.id          uno a molti (posts - users)
+    foreign key bacheca_user -> users.id    uno a molti (posts - users)
+    foreign key bacheca_gruppo -> gruppi.id uno a molti (posts - gruppi)
+
+- gruppi
+    id              integer                 primary key, auto increment
+    nome            string (64)             unique
+    urlImmagine     string (2083)
+    administrator   integer
+
+    foreign key administrator -> users.id   uno a molti (gruppi - users)
+
+- membri_gruppo
+    gruppo          integer
+    membro          integer
+
+    foreign key gruppo -> gruppi.id
+    foreign key membro -> users.id
+    primary key (gruppo, membro)            molti a molti (gruppi - users)
+
+- friendship
+    follower        integer
+    followed        integer
+
+    foreign key follower -> users.id
+    foreign key followed -> users.id
+    primary key (follower, followed)        molti a molti (users - users)
