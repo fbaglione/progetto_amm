@@ -5,7 +5,7 @@
 
 /**
  * Dati accesso DB
- *      username: 'adminstrator'
+ *      username: 'administrator'
  *      password: 'pass'
  */
 
@@ -105,9 +105,9 @@ INSERT INTO membri_gruppo (gruppo, membro) VALUES
     (3, 1);
 
 /* postType */
-INSERT INTO postType (id, nome) VALUES (default, 'TEXT');
-INSERT INTO postType (id, nome) VALUES (default, 'IMAGE');
-INSERT INTO postType (id, nome) VALUES (default, 'LINK');
+INSERT INTO postType (id, nome) VALUES (1, 'TEXT');
+INSERT INTO postType (id, nome) VALUES (2, 'IMAGE');
+INSERT INTO postType (id, nome) VALUES (3, 'LINK');
 
 /* post */
 INSERT INTO posts (id, postType, autore, text, content, bacheca_user, bacheca_gruppo) VALUES

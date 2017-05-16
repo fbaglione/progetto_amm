@@ -12,6 +12,8 @@ import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,35 @@ import javax.servlet.http.HttpSession;
  */
 public class Bacheca extends HttpServlet {
 
+    // Variabili DB
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+    private static final String DB_USER = "administrator";
+    private static final String DB_PASS = "pass";
+    
+    @Override
+    public void init() {
+
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH + ";upgrade=true";
+
+        // Controllo presenza libreria per JDBC
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        // Inizilizzazione factory
+        UserFactory.getInstance().setConnectionString(dbConnection);
+        UserFactory.getInstance().setConnectionUser(DB_USER);
+        UserFactory.getInstance().setConnectionPassword(DB_PASS);
+        
+        PostFactory.getInstance().setConnectionString(dbConnection);
+        PostFactory.getInstance().setConnectionUser(DB_USER);
+        PostFactory.getInstance().setConnectionPassword(DB_PASS);
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -70,7 +101,7 @@ public class Bacheca extends HttpServlet {
             request.setAttribute("user", user);
 
             // lista posts
-            List<Post> posts = PostFactory.getInstance().getPostList(user);
+            List<Post> posts = PostFactory.getInstance().getPostBacheca(user);
             request.setAttribute("posts", posts);
             
             // redirect bacheca

@@ -63,12 +63,16 @@ public class Profilo extends HttpServlet {
                 if(((User) request.getAttribute("loggedUser")).getId() == (Integer.parseInt(request.getParameter("userID")))) {
                 
                     // Submission del form
+                    user.setId(Integer.parseInt(request.getParameter("userID")));
                     user.setNome((String) request.getParameter("nome"));
                     user.setCognome((String) request.getParameter("cognome"));
                     user.setDataDiNascita((String) request.getParameter("dataDiNascita"));
                     user.setFrase((String) request.getParameter("frase"));
                     user.setPassword((String) request.getParameter("pswd"));
                     user.setUrlImmagine((String) request.getParameter("urlImmagine"));
+                    
+                    // update nel DB
+                    UserFactory.getInstance().updateUser(user);
                     
                     // redirect con dati aggiornati
                     request.setAttribute("datiAggiornati", true);

@@ -1,4 +1,5 @@
 package amm.progetto.Classi;
+import java.sql.Date;
 
 /**
  * Informazioni di un utente
@@ -11,7 +12,7 @@ public class User {
     private String nome;
     private String cognome;
     private String urlImmagine;
-    private String dataDiNascita;
+    private Date dataDiNascita;
     private String frase;
     private String password;
 
@@ -91,17 +92,24 @@ public class User {
     /**
      * @return data di nascita dell'utente
      */
-    public String getDataDiNascita() {
+    public Date getDataDiNascita() {
         return dataDiNascita;
     }
 
     /**
      * @param dataDiNascita data di nascita dell'utente da settare
      */
-    public void setDataDiNascita(String dataDiNascita) {
+    public void setDataDiNascita(Date dataDiNascita) {
         this.dataDiNascita = dataDiNascita;
     }
-
+    
+    /**
+     * @param dataDiNascita data di nascita dell'utente da settare
+     */
+    public void setDataDiNascita(String dataDiNascita) {
+        this.dataDiNascita = Date.valueOf(dataDiNascita);
+    }
+    
     /**
      * @return frase di presentazione dell'utente
      */

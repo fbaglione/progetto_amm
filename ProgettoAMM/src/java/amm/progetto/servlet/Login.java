@@ -24,15 +24,17 @@ import javax.servlet.http.HttpSession;
 @WebServlet(loadOnStartup = 0)
 public class Login extends HttpServlet {
 
-    // Variabili banca dati
+    // Variabili DB
     private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
     private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
     private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
-
+    private static final String DB_USER = "administrator";
+    private static final String DB_PASS = "pass";
+    
     @Override
     public void init() {
 
-        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH + ";upgrade=true";
 
         // Controllo presenza libreria per JDBC
         try {
@@ -42,7 +44,9 @@ public class Login extends HttpServlet {
         }
 
         // Inizilizzazione factory
-        //ObjectFactory.getInstance().setConnectionString(dbConnection);
+        UserFactory.getInstance().setConnectionString(dbConnection);
+        UserFactory.getInstance().setConnectionUser(DB_USER);
+        UserFactory.getInstance().setConnectionPassword(DB_PASS);
     }
 
     /**
@@ -90,7 +94,7 @@ public class Login extends HttpServlet {
             } else {
 
                 // tentativo di login
-                User userLogged = this.login(username, password);
+                User userLogged = UserFactory.getInstance().login(username, password);
 
                 if (userLogged != null) {
 
@@ -107,27 +111,6 @@ public class Login extends HttpServlet {
                 }
             }
         }
-    }
-
-    /**
-     * Permette di ottenere l'utente con username e password specificati
-     *
-     * @param username username dell'utente richiesto
-     * @param password password dell'utente richiesto
-     * @return User dell'utente
-     */
-    private User login(String username, String password) {
-
-        for (User user : UserFactory.getInstance().getListaUser()) {
-
-            if (user.getUsername().equals(username)) {
-                if (user.getPassword().equals(password)) {
-                    return user;
-                }
-                return null;
-            }
-        }
-        return null;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
