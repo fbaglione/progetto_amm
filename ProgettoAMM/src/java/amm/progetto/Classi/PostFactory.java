@@ -57,7 +57,7 @@ public class PostFactory {
                 
                 Post post = new Post();
                 post.setId(set.getInt("id"));
-                post.setUser(user);
+                post.setAutore(UserFactory.getInstance().getUserById(set.getInt("autore")));
                 post.setPostType(postTypeFromInt(set.getInt("postType")));
                 post.setText(set.getString("text"));
                 post.setContent(set.getString("content"));

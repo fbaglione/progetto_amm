@@ -28,10 +28,10 @@ public class Post {
     };
 
     private int id;
-    private User user;
+    private Type postType;
+    private User autore;
     private String content;
     private String text;
-    private Type postType;
     
     /**
      * @return id del post
@@ -50,15 +50,15 @@ public class Post {
     /**
      * @return User autore del post
      */
-    public User getUser() {
-        return user;
+    public User getAutore() {
+        return autore;
     }
 
     /**
      * @param user User autore da settare
      */
-    public void setUser(User user) {
-        this.user = user;
+    public void setAutore(User user) {
+        this.autore = user;
     }
 
     /**

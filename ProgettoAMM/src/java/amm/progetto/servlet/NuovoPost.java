@@ -58,7 +58,7 @@ public class NuovoPost extends HttpServlet {
                 Post post = new Post();
                 post.setContent((String) request.getParameter("allegatoPost"));
                 post.setText((String) request.getParameter("testoPost"));
-                post.setUser(UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("autore"))));
+                post.setAutore(UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("autore"))));
                 post.setPostType(Post.Type.valueOf((String) request.getParameter("tipologiaPost")));
 
                 request.setAttribute("post", post);

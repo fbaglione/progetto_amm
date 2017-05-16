@@ -43,8 +43,8 @@
                         <c:forEach var="post" items="${posts}">
                             <div class="post">
                                 <div class="autore">
-                                    <img class="profilePic" alt="foto ${user.getNome()} ${user.getCognome()}" src="${user.getUrlImmagine()}">
-                                    <div class="nome">${user.getNome()} ${user.getCognome()}</div>
+                                    <img class="profilePic" alt="foto ${post.getAutore().getNome()} ${post.getAutore().getCognome()}" src="${post.getAutore().getUrlImmagine()}">
+                                    <div class="nome">${post.getAutore().getNome()} ${post.getAutore().getCognome()}</div>
                                 </div>
                                 <div class="contenuto">
                                     <c:if test="${post.postType == 'TEXT'}">

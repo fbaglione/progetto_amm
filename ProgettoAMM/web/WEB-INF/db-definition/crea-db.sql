@@ -113,5 +113,5 @@ INSERT INTO postType (id, nome) VALUES (3, 'LINK');
 INSERT INTO posts (id, postType, autore, text, content, bacheca_user, bacheca_gruppo) VALUES
     (default, 1, 1, 'Ciao, mio schiavo. Dammi cibo! Adesso!', null, 2, null),
     (default, 2, 2, 'Il miglior gatto al mondo.', 'http://scontent.cdninstagram.com/t51.2885-15/s750x750/sh0.08/e35/18014025_292883181123886_5187515530797383680_n.jpg?ig_cache_key=MTUwMjE2Njg3MzE1MjAyNjU5Mg%3D%3D.2', 1, null),
-    (default, 3, 2, 'Ecco un ottimo sito per generare "dummy text".', 'http://www.lipsum.com/', 2, null),
+    (default, 3, 2, 'Ecco un ottimo sito per generare "dummy text".', 'http://www.lipsum.com/', 3, null),
     (default, 3, 2, 'Splendido nuovo modello.', 'http://www.hotairflight.com/wp-content/uploads/2016/08/hot-air-balloon-cost.jpg', null, 1);
