@@ -315,6 +315,7 @@ nav li.active{
 .nuovoPost .datiUtenti {
     padding: 4px;
     font-weight: bold;
+    text-align: center;
 }
 .nuovoPost .label {
     color: #757575;

@@ -25,25 +25,30 @@
 
                 <!-- contenuto principale -->
                 <div class="cont">
+                    <div class="post">
+                        <div class="autore">
+                            <img class="profilePic" alt="foto ${post.getAutore().getNome()} ${post.getAutore().getCognome()}" src="${post.getAutore().getUrlImmagine()}">
+                            <div class="nome">${post.getAutore().getNome()} ${post.getAutore().getCognome()}</div>
+                        </div>
+                        <div class="contenuto">
+                            <c:if test="${post.postType == 'TEXT'}">
+                                <p>${post.text}</p>
+                            </c:if>
+                            <c:if test="${post.postType == 'IMAGE'}">
+                                <p>${post.text}</p>
+                                <img alt="Post con foto" src="${post.content}">
+                            </c:if>
+                            <c:if test="${post.postType == 'LINK'}">
+                                <p>${post.text}</p>
+                                <a href="${post.content}">${post.content}</a>
+                            </c:if>
+                        </div>
+                    </div>
                     <div class="nuovoPost">
                         <div class="datiUtenti">
                             Post sulla bacheca di ${user.getNome()} ${user.getCognome()}
                         </div>
                         <form action="NuovoPost" method="post">
-                            <div>
-                                <div class="label">Autore</div>
-                                <div class="content">${post.getAutore().getNome()} ${post.getAutore().getCognome()}</div>
-                            </div>
-                            <div>
-                                <div class="label">Testo del post</div>
-                                <div class="content">${post.getText()}</div>
-                            </div>
-                            <div>
-                                <div class="label">Allegato (opzionale)</div>
-                                <div class="content">${post.getContent()}</div>
-                            </div>
-                            <div class="label">Tipologia</div>
-                            <div class="content">${post.getPostType()}</div>
 
                             <input type="hidden" name="testoPost" value="${post.getText()}" />
                             <input type="hidden" name="allegatoPost" value="${post.getContent()}"/>
@@ -52,7 +57,7 @@
                             <input type="hidden" name="userID" value="${user.getId()}" />
                             <input type="hidden" name="conferma" value="true" />
 
-                            <button type="submit">Conferma post</button>
+                            <button type="submit">Invia post</button>
                         </form>
                     </div>
                 </div>
