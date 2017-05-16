@@ -77,6 +77,40 @@ public class PostFactory {
     }
     
     /**
+     * Inserimento di un post nella bacheca di un user
+     * 
+     * @param post post da inserire nella bacheca di userDestinatario
+     * @param userDestinatario user al quale pubblicare il post in bacheca
+     */
+    public void addPost(Post post, User userDestinatario) {
+        
+        // Inserimento post
+        try {
+            
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO posts "
+                    + "(id, postType, autore, text, content, bacheca_user, bacheca_gruppo) VALUES "
+                    + "(default, ?, ?, ?, ?, ?, ?)");
+            stmt.setInt(1, postTypeFromEnum(post.getPostType()));
+            stmt.setInt(2, post.getAutore().getId());
+            stmt.setString(3, post.getText());
+            stmt.setString(4, post.getContent());
+            stmt.setInt(5, userDestinatario.getId());
+            stmt.setNull(6, java.sql.Types.INTEGER);
+            
+            stmt.executeUpdate();
+            
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
      * @param type stringa con il nome del tipo
      * @return Post.Type tipo del post
      */

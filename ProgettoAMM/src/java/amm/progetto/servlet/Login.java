@@ -5,6 +5,7 @@
  */
 package amm.progetto.servlet;
 
+import amm.progetto.Classi.PostFactory;
 import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class Login extends HttpServlet {
     @Override
     public void init() {
 
-        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH + ";upgrade=true";
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_CLEAN_PATH + ";upgrade=true";
 
         // Controllo presenza libreria per JDBC
         try {
@@ -47,6 +48,10 @@ public class Login extends HttpServlet {
         UserFactory.getInstance().setConnectionString(dbConnection);
         UserFactory.getInstance().setConnectionUser(DB_USER);
         UserFactory.getInstance().setConnectionPassword(DB_PASS);
+        
+        PostFactory.getInstance().setConnectionString(dbConnection);
+        PostFactory.getInstance().setConnectionUser(DB_USER);
+        PostFactory.getInstance().setConnectionPassword(DB_PASS);
     }
 
     /**

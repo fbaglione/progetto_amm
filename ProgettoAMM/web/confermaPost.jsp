@@ -32,7 +32,7 @@
                         <form action="NuovoPost" method="post">
                             <div>
                                 <div class="label">Autore</div>
-                                <div class="content">${post.getUser().getNome()} ${post.getUser().getCognome()}</div>
+                                <div class="content">${post.getAutore().getNome()} ${post.getAutore().getCognome()}</div>
                             </div>
                             <div>
                                 <div class="label">Testo del post</div>
@@ -48,15 +48,12 @@
                             <input type="hidden" name="testoPost" value="${post.getText()}" />
                             <input type="hidden" name="allegatoPost" value="${post.getContent()}"/>
                             <input type="hidden" name="tipologiaPost" value="${post.getPostType()}" />
-                            <input type="hidden" name="autore" value="${post.getUser().getId()}" />
+                            <input type="hidden" name="autore" value="${post.getAutore().getId()}" />
                             <input type="hidden" name="userID" value="${user.getId()}" />
                             <input type="hidden" name="conferma" value="true" />
 
                             <button type="submit">Conferma post</button>
                         </form>
-                            <c:if test="${confermaInvio != null}">
-                                <div class="datiAggiornati">${confermaInvio}</div>
-                            </c:if>
                     </div>
                 </div>
             </div>

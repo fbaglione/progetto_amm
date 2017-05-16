@@ -72,11 +72,11 @@ public class NuovoPost extends HttpServlet {
                 }
                 else {
                     
-                    // invio effettivo del post
-                    request.setAttribute("confermaInvio", "Hai scritto sulla bacheca di " + user.getNome() + " " + user.getCognome());
+                    // update effettivo del post
+                    PostFactory.getInstance().addPost(post, user);
                     
-                    // redirect pagina di conferma
-                    request.getRequestDispatcher("confermaPost.jsp").forward(request, response);
+                    // redirect bacheca
+                    request.getRequestDispatcher("Bacheca?user=" + user.getId()).forward(request, response);
                 }
             }
             else {

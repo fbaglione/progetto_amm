@@ -173,7 +173,7 @@ public class UserFactory {
         try {
             Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
             
-            PreparedStatement stmt = conn.prepareStatement("UPDATE user SET " + 
+            PreparedStatement stmt = conn.prepareStatement("UPDATE users SET " + 
                     "username = ?, password = ?, nome = ?, cognome = ?, dataDiNascita = ?, frase = ?, urlImmagine = ? " +
                     "WHERE id = ?");
             stmt.setString(1, user.getUsername());
