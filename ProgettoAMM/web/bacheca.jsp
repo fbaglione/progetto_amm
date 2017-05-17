@@ -32,6 +32,14 @@
                         <img class="imgProfilo" alt="foto ${user.getNome()} ${user.getCognome()}" src="${user.getUrlImmagine()}">
                         <div class="autore">${user.getNome()} ${user.getCognome()}</div>
                         <div class="contenuto">"${user.getFrase()}"</div>
+                        <c:choose>
+                            <c:when test="${friendship}">
+                            <div class="friendship"></div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="addFriendship"></div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     
                     <div class="nuovoPost">

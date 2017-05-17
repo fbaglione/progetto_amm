@@ -162,7 +162,49 @@ public class UserFactory {
         return user;
     }
     
-     /**
+    /**
+     * Permette di sapere se un user è amico di un'altro
+     * Restituisce vero anche se i due utenti coincidono
+     * @param follower primo user
+     * @param followed user con cui si ha una amicizia
+     * @return boolean se il follower ha stretto amicizia con il followed
+     */
+    public boolean areFriends(User follower, User followed) {
+        
+        // restituisce true se i due user sono lo stesso
+        if(follower.getId() == followed.getId())
+            return true;
+        
+        boolean areFriends = false;
+        
+        // Caricamento utente
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM friendship WHERE follower = ? AND followed = ?");
+            stmt.setInt(1, follower.getId());
+            stmt.setInt(2, followed.getId());
+            
+            ResultSet set = stmt.executeQuery();           
+            
+            if(set.next()) {
+                
+                // amicizia trovata
+                areFriends = true;
+            }
+            
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+        
+        return areFriends;
+    }
+    
+    /**
      * Permette di modificare l'user con id specificato
      *
      * @param user id e dati dell'utente da modificare

@@ -303,7 +303,26 @@ nav li.active{
     height: 50px;
     box-shadow: 0 0 8px rgba(0,0,0,.3);
 }
+.frase .friendship {
+    float: right;
+    width: 24px;
+    height: 24px; 
+    position: relative;
+    right: 4px;
+    top: 4px;
+    background: url('img/heart.png');
+}
 
+.frase .addFriendship {
+    float: right;
+    width: 24px;
+    height: 24px; 
+    position: relative;
+    right: 4px;
+    top: 4px;
+    background: url('img/emptyHeart.png');
+}
+/* nuovo post */
 .nuovoPost {
     width: auto;
     margin-left: auto;
@@ -340,6 +359,7 @@ nav li.active{
     padding: 4px;
 }
 
+/* post */
 .post {
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0,0,0,.3);

@@ -72,6 +72,10 @@ public class Bacheca extends HttpServlet {
             User user = (User) UserFactory.getInstance().getUserById(userID);
             request.setAttribute("user", user);
 
+            // dati amicizia
+            boolean friendship = UserFactory.getInstance().areFriends((User)request.getAttribute("loggedUser"), user);
+            request.setAttribute("friendship", friendship);
+            
             // lista posts
             List<Post> posts = PostFactory.getInstance().getPostBacheca(user);
             request.setAttribute("posts", posts);
