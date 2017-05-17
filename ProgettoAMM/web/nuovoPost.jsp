@@ -16,7 +16,12 @@
     </div>
     
     <input type="hidden" name="autore" value="${loggedUser.getId()}" />
-    <input type="hidden" name="userID" value="${user.getId()}" />
-
+    <c:if test="${group == null}">
+        <input type="hidden" name="userID" value="${user.getId()}" />
+    </c:if>
+    <c:if test="${group != null}">
+        <input type="hidden" name="groupID" value="${group.getId()}" />
+    </c:if>
+    
     <button type="submit">Crea post</button>
 </form>

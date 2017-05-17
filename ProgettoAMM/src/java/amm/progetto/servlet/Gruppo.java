@@ -65,9 +65,10 @@ public class Gruppo extends HttpServlet {
                 groupID = (int) session.getAttribute("userID"); 
             }
             
-            // dati user bacheca
+            // dati gruppo bacheca
             Group group = (Group) GroupFactory.getInstance().getGroupById(groupID);
-
+            request.setAttribute("group", group);
+            
             // lista posts
             List<Post> posts = PostFactory.getInstance().getPostBacheca(group);
             request.setAttribute("posts", posts);

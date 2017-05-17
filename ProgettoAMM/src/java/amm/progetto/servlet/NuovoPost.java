@@ -5,13 +5,13 @@
  */
 package amm.progetto.servlet;
 
+import amm.progetto.Classi.Group;
+import amm.progetto.Classi.GroupFactory;
 import amm.progetto.Classi.Post;
 import amm.progetto.Classi.PostFactory;
 import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,19 +52,34 @@ public class NuovoPost extends HttpServlet {
                 
                 // Utente autorizzato all'invio
                 
-                // Popolamento dati del post e dell'autore
-                User user = UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("userID")));
+                // inizializzazione variabile del destinatario
+                User bachecaUser = null;
+                Group bachecaGroup = null;
                 
+                // popolamento dati del post                
                 Post post = new Post();
                 post.setContent((String) request.getParameter("allegatoPost"));
                 post.setText((String) request.getParameter("testoPost"));
                 post.setAutore(UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("autore"))));
                 post.setPostType(Post.Type.valueOf((String) request.getParameter("tipologiaPost")));
 
-                request.setAttribute("post", post);
-                request.setAttribute("user", user);
+                // popolamento del destinatario
+                if(request.getParameter("userID") != null) {
+                    
+                    // user come destinatario
+                    bachecaUser = UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("userID")));
+                }
+                else {
+                    // gruppo come destinatario
+                    bachecaGroup = GroupFactory.getInstance().getGroupById(Integer.parseInt(request.getParameter("groupID")));
+                }
                 
-                // Pagina di conferma
+                // passaggio parametri
+                request.setAttribute("post", post);
+                request.setAttribute("user", bachecaUser);
+                request.setAttribute("group", bachecaGroup);
+                
+                // pagina di conferma
                 if(request.getParameter("conferma") == null) {
                 
                     // redirect pagina di conferma
@@ -73,10 +88,19 @@ public class NuovoPost extends HttpServlet {
                 else {
                     
                     // update effettivo del post
-                    PostFactory.getInstance().addPost(post, user);
-                    
-                    // redirect bacheca
-                    request.getRequestDispatcher("Bacheca?user=" + user.getId()).forward(request, response);
+                    if(bachecaUser != null) {
+
+                        // user come destinatario
+                        PostFactory.getInstance().addPost(post, (User)request.getAttribute("user"));
+                        // redirect bacheca
+                        request.getRequestDispatcher("Bacheca?user=" + ((User)request.getAttribute("user")).getId()).forward(request, response);
+                    }
+                    else {
+                        // gruppo come destinatario
+                        PostFactory.getInstance().addPost(post, (Group)request.getAttribute("group"));
+                        // redirect bacheca
+                        request.getRequestDispatcher("Gruppo?group=" + ((Group)request.getAttribute("group")).getId()).forward(request, response);
+                    }
                 }
             }
             else {

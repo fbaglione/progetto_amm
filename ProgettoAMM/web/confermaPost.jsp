@@ -54,7 +54,14 @@
                             <input type="hidden" name="allegatoPost" value="${post.getContent()}"/>
                             <input type="hidden" name="tipologiaPost" value="${post.getPostType()}" />
                             <input type="hidden" name="autore" value="${post.getAutore().getId()}" />
-                            <input type="hidden" name="userID" value="${user.getId()}" />
+
+                            <c:if test="${group == null}">
+                                <input type="hidden" name="userID" value="${user.getId()}" />
+                            </c:if>
+                            <c:if test="${group != null}">
+                                <input type="hidden" name="groupID" value="${group.getId()}" />
+                            </c:if>
+                            
                             <input type="hidden" name="conferma" value="true" />
 
                             <button type="submit">Invia post</button>
