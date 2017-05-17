@@ -1,5 +1,7 @@
 package amm.progetto.Classi;
 
+import amm.progetto.Classi.User;
+
 /**
  * Informazioni di un gruppo
  * @author DatrhiilPC

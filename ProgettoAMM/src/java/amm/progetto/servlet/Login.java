@@ -5,6 +5,7 @@
  */
 package amm.progetto.servlet;
 
+import amm.progetto.Classi.GroupFactory;
 import amm.progetto.Classi.PostFactory;
 import amm.progetto.Classi.User;
 import amm.progetto.Classi.UserFactory;
@@ -52,6 +53,10 @@ public class Login extends HttpServlet {
         PostFactory.getInstance().setConnectionString(dbConnection);
         PostFactory.getInstance().setConnectionUser(DB_USER);
         PostFactory.getInstance().setConnectionPassword(DB_PASS);
+        
+        GroupFactory.getInstance().setConnectionString(dbConnection);
+        GroupFactory.getInstance().setConnectionUser(DB_USER);
+        GroupFactory.getInstance().setConnectionPassword(DB_PASS);
     }
 
     /**

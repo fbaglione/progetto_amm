@@ -20,6 +20,14 @@
         <servlet-name>NuovoPost</servlet-name>
         <servlet-class>amm.progetto.servlet.NuovoPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminaProfilo</servlet-name>
+        <servlet-class>amm.progetto.servlet.EliminaProfilo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Gruppo</servlet-name>
+        <servlet-class>amm.progetto.servlet.Gruppo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Bacheca</servlet-name>
         <url-pattern>/Bacheca</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>NuovoPost</servlet-name>
         <url-pattern>/NuovoPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminaProfilo</servlet-name>
+        <url-pattern>/EliminaProfilo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Gruppo</servlet-name>
+        <url-pattern>/Gruppo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

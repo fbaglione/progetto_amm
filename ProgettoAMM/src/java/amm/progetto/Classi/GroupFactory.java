@@ -1,5 +1,11 @@
 package amm.progetto.Classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +15,10 @@ import java.util.List;
  */
 public class GroupFactory {
 
-    // Stringa per la connessione
+    // Stringhe per la connessione
     private String connectionString;
+    private String connectionUser;
+    private String connectionPassword;
     
     // Pattern Design Singleton
     private static GroupFactory singleton;
@@ -26,73 +34,78 @@ public class GroupFactory {
         return singleton;
     }
 
-    private ArrayList<Group> listaGroup = new ArrayList<Group>();
-
-    private GroupFactory() {
-        
-        UserFactory userFactory = UserFactory.getInstance();
-
-        // Creazione Group
-        
-        Group group1 = new Group();
-        group1.setId(0);
-        group1.setNome("Mongolfieristi");
-        group1.setUrlImmagine("img/mongolfieristi.png");
-        group1.setAdmin(userFactory.getUserById(0));
-        
-        Group group2 = new Group();
-        group2.setId(1);
-        group2.setNome("Professori");
-        group2.setUrlImmagine("img/lucio.bmp");
-        group2.setAdmin(userFactory.getUserById(2));
-        
-        Group group3 = new Group();
-        group3.setId(2);
-        group3.setNome("Animali");
-        group3.setUrlImmagine("img/gattodjanni.jpg");
-        group3.setAdmin(userFactory.getUserById(0));
-        
-        listaGroup.add(group1);
-        listaGroup.add(group2);
-        listaGroup.add(group3);
-    }
-
     /**
      * Permette di ottenere il gruppo con id specificato
      * @param id id del gruppo richiesto
      * @return Group con id richiesto
      */
     public Group getGroupById(int id) {
-        for (Group group : this.getListaGroup()) {
-            if (group.getId() == id) {
-                return group;
+        
+        Group group = null;
+        
+        // Caricamento utente
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM gruppi WHERE id = ?");
+            stmt.setInt(1, id);
+            
+            ResultSet set = stmt.executeQuery();            
+            
+            if(set.next()) {
+                
+                // Group trovato
+                group = new Group();
+                group.setId(set.getInt("id"));
+                group.setNome(set.getString("nome"));
+                group.setUrlImmagine(set.getString("urlImmagine"));
+                group.setAdmin(UserFactory.getInstance().getUserById(set.getInt("administrator")));
             }
+            
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
         }
-        return null;
-    }
-
-    /**
-     * Restituisce una lista con i gruppi a cui partecipa
-     * l'user specificato
-     * @param user user richiesto
-     * @return lista con i gruppi dell'user
-     */
-    public List getGroupList(User user) {
-
-        List<Group> listaGroup = new ArrayList<Group>();
-
-        for (Group group : this.getListaGroup()) {
-            if (group.getAdmin().equals(user)) {
-                listaGroup.add(group);
-            }
-        }
-        return listaGroup;
+        
+        return group;
     }
 
     /**
      * @return lista dei gruppi nel sistema
      */
     public ArrayList<Group> getListaGroup() {
+                
+        ArrayList<Group> listaGroup = new ArrayList<>();
+        
+        // Caricamento utenti
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            Statement stmt = conn.createStatement();
+            ResultSet set = stmt.executeQuery("SELECT * FROM gruppi");
+            
+            while(set.next()) {
+                
+                Group group = new Group();
+                group.setId(set.getInt("id"));
+                group.setNome(set.getString("nome"));
+                group.setUrlImmagine(set.getString("urlImmagine"));
+                group.setAdmin(UserFactory.getInstance().getUserById(set.getInt("administrator")));
+                
+                listaGroup.add(group);
+            }
+            
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+        
         return listaGroup;
     }
 
@@ -108,5 +121,33 @@ public class GroupFactory {
      */
     public void setConnectionString(String connectionString) {
         this.connectionString = connectionString;
+    }
+    
+    /**
+     * @return connectionUser
+     */
+    public String getConnectionUser() {
+        return connectionUser;
+    }
+
+    /**
+     * @param connectionUser da settare
+     */
+    public void setConnectionUser(String connectionUser) {
+        this.connectionUser = connectionUser;
+    }
+
+    /**
+     * @return connectionPassword
+     */
+    public String getConnectionPassword() {
+        return connectionPassword;
+    }
+
+    /**
+     * @param connectionPassword connectionPassword da settare
+     */
+    public void setConnectionPassword(String connectionPassword) {
+        this.connectionPassword = connectionPassword;
     }
 }

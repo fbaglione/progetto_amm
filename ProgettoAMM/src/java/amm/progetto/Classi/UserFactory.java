@@ -197,6 +197,35 @@ public class UserFactory {
     }
     
     /**
+     * Permette di eliminare l'utente
+     *
+     * @param user da eliminare
+     */
+    public void deleteUser(User user) {
+        
+        // Caricamento utenti
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+             // Inizio transazione
+            conn.setAutoCommit(false);
+            
+            // Eliminazione post
+            
+            // Eliminazione amicizie
+            // Eliminazione iscrizioni ai gruppi
+            // Eliminazione finale utente
+
+
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
      * @return connectionString
      */
     public String getConnectionString() {

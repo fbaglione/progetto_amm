@@ -73,6 +73,7 @@
                                 <div class="datiAggiornati">Dati aggiornati!</div>
                             </c:if>
                         </form>
+                        <a href="EliminaProfilo">Elimina profilo</a>
                     </div>
                 </div>
             </div>

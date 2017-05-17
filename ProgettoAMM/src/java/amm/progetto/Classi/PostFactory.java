@@ -48,8 +48,58 @@ public class PostFactory {
         try {
             Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
             
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM posts WHERE bacheca_user = ?");
+            /* Seleziona tutti i post sulla bacheca dell'utente o di uno dei gruppi
+             * a cui è iscritto */
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM posts" +
+                " LEFT JOIN membri_gruppo ON posts.bacheca_gruppo = membri_gruppo.gruppo" +
+                " WHERE posts.bacheca_user = ? OR membri_gruppo.membro = ?" +
+                " ORDER BY posts.id DESC");
             stmt.setInt(1, user.getId());
+            stmt.setInt(2, user.getId());
+            
+            ResultSet set = stmt.executeQuery();
+            
+            while(set.next()) {
+                
+                Post post = new Post();
+                post.setId(set.getInt("id"));
+                post.setAutore(UserFactory.getInstance().getUserById(set.getInt("autore")));
+                post.setPostType(postTypeFromInt(set.getInt("postType")));
+                post.setText(set.getString("text"));
+                post.setContent(set.getString("content"));
+                
+                listaPost.add(post);
+            }
+            
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+        
+        return listaPost;
+    }
+    
+    /**
+     * Restituisce una lista con i post fatti sul gruppo
+     * dagli utenti iscritti
+     * @param group gruppo richiesto
+     * @return lista con i post del gruppo
+     */
+    public List getPostBacheca(Group group) {
+
+        List<Post> listaPost = new ArrayList<>();
+        
+        // Caricamento post
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            /* Seleziona tutti i post sulla bacheca dell'utente o di uno dei gruppi
+             * a cui è iscritto */
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM posts WHERE bacheca_gruppo = ? ORDER BY id DESC");
+            stmt.setInt(1, group.getId());
             
             ResultSet set = stmt.executeQuery();
             

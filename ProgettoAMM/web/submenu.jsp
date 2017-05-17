@@ -24,7 +24,7 @@
             <c:forEach var="group" items="${groups}">
                 <li>
                     <img src="${group.getUrlImmagine()}" alt="foto ${group.getNome()}" />
-                    <a href="#Group?group=${group.getId()}">${group.getNome()}</a>
+                    <a href="Gruppo?group=${group.getId()}">${group.getNome()}</a>
                 </li>
             </c:forEach>
         </ul>
