@@ -29,6 +29,7 @@
                 <!-- contenuto principale -->
                 <div class="cont">
                     <div class="frase">
+                        <img class="imgProfilo" alt="foto ${user.getNome()} ${user.getCognome()}" src="${user.getUrlImmagine()}">
                         <div class="autore">${user.getNome()} ${user.getCognome()}</div>
                         <div class="contenuto">"${user.getFrase()}"</div>
                     </div>

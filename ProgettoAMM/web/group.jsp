@@ -29,6 +29,11 @@
                 <!-- contenuto principale -->
                 <div class="cont">
                     
+                    <div class="frase">
+                        <img class="imgProfilo" src="${group.getUrlImmagine()}" alt="foto ${group.getNome()}" />
+                        <div class="autore">${group.getNome()}</div>
+                    </div>
+                    
                     <div class="nuovoPost">
                         <jsp:include page="nuovoPost.jsp"/>
                     </div>
