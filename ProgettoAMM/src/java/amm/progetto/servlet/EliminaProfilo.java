@@ -44,7 +44,8 @@ public class EliminaProfilo extends HttpServlet {
             // Utente autenticato
             request.setAttribute("loggedUser", (User) UserFactory.getInstance().getUserById((int) session.getAttribute("userID")));
 
-            
+            // Eliminazione profilo
+            UserFactory.getInstance().deleteUser((User)request.getAttribute("loggedUser"));
             
             // redirect logout
             request.getRequestDispatcher("Logout").forward(request, response);

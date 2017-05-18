@@ -245,24 +245,77 @@ public class UserFactory {
      */
     public void deleteUser(User user) {
         
-        // Caricamento utenti
+        PreparedStatement stmt_posts = null;
+        PreparedStatement stmt_friendship = null;
+        PreparedStatement stmt_membri_gruppo = null;
+        PreparedStatement stmt_users = null;
+        
         try {
             Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
-            
-             // Inizio transazione
-            conn.setAutoCommit(false);
-            
-            // Eliminazione post
-            
-            // Eliminazione amicizie
-            // Eliminazione iscrizioni ai gruppi
-            // Eliminazione finale utente
+        
+            // Caricamento utenti
+            try {
+                 // Inizio transazione
+                conn.setAutoCommit(false);
 
+                // Eliminazione posts di cui l'user è autore
+                stmt_posts = conn.prepareStatement("DELETE FROM posts WHERE autore = ?");
+                stmt_posts.setInt(1, user.getId());
+                stmt_posts.executeUpdate();
 
-            conn.close();
-            
-        } catch (SQLException ex) {
-            
+                // Eliminazione posts sulla bacheca dell'user
+                stmt_posts = conn.prepareStatement("DELETE FROM posts WHERE bacheca_user = ?");
+                stmt_posts.setInt(1, user.getId());
+                stmt_posts.executeUpdate();
+                
+                // Eliminazione amicizie
+                stmt_friendship = conn.prepareStatement("DELETE FROM friendship WHERE follower = ? OR followed = ?");
+                stmt_friendship.setInt(1, user.getId());
+                stmt_friendship.setInt(2, user.getId());
+                stmt_friendship.executeUpdate();
+
+                // Eliminazione iscrizioni ai gruppi
+                stmt_membri_gruppo = conn.prepareStatement("DELETE FROM membri_gruppo WHERE membro = ?");
+                stmt_membri_gruppo.setInt(1, user.getId());
+                stmt_membri_gruppo.executeUpdate();
+
+                // Sostituzione dell'amministratore del sito come admin dei gruppi
+                // di cui l'utente era amministratore
+                stmt_membri_gruppo = conn.prepareStatement("UPDATE gruppi SET administrator = 1 WHERE administrator = ?");
+                stmt_membri_gruppo.setInt(1, user.getId());
+                stmt_membri_gruppo.executeUpdate();
+                
+                // Eliminazione finale utente
+                stmt_users = conn.prepareStatement("DELETE FROM users WHERE id = ?");
+                stmt_users.setInt(1, user.getId());
+                stmt_users.executeUpdate();
+
+                conn.commit();
+
+            } catch (SQLException ex) {
+
+                // Errore SQL, rollback
+                if(conn != null)
+                    conn.rollback();
+
+                ex.printStackTrace();
+            } finally {
+
+                // Chiusura statements
+                if(stmt_posts != null)
+                    stmt_posts.close();
+                if(stmt_friendship != null)
+                    stmt_friendship.close();
+                if(stmt_membri_gruppo != null)
+                    stmt_membri_gruppo.close();
+                if(stmt_users != null)
+                    stmt_users.close();
+
+                // Chiusura connessione
+                conn.setAutoCommit(true);
+                conn.close();
+            }
+        } catch(SQLException ex) {
             ex.printStackTrace();
         }
     }

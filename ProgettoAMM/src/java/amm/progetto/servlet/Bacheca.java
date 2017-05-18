@@ -71,17 +71,25 @@ public class Bacheca extends HttpServlet {
             // dati user bacheca
             User user = (User) UserFactory.getInstance().getUserById(userID);
             request.setAttribute("user", user);
+            
+            if(user != null) {
+                // dati amicizia
+                boolean friendship = UserFactory.getInstance().areFriends((User)request.getAttribute("loggedUser"), user);
+                request.setAttribute("friendship", friendship);
 
-            // dati amicizia
-            boolean friendship = UserFactory.getInstance().areFriends((User)request.getAttribute("loggedUser"), user);
-            request.setAttribute("friendship", friendship);
-            
-            // lista posts
-            List<Post> posts = PostFactory.getInstance().getPostBacheca(user);
-            request.setAttribute("posts", posts);
-            
-            // redirect bacheca
-            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+                // lista posts
+                List<Post> posts = PostFactory.getInstance().getPostBacheca(user);
+                request.setAttribute("posts", posts);
+
+                // redirect bacheca
+                request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+            }
+            else {
+                
+                // Utente richiesto inesistente
+                response.getWriter().println("<h1> La risorsa richiesta non è disponibile! </h1>");
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
         }
         else {
             

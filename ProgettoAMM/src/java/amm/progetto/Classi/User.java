@@ -107,7 +107,10 @@ public class User {
      * @param dataDiNascita data di nascita dell'utente da settare
      */
     public void setDataDiNascita(String dataDiNascita) {
-        this.dataDiNascita = Date.valueOf(dataDiNascita);
+        if(!dataDiNascita.equals(""))
+            this.dataDiNascita = Date.valueOf(dataDiNascita);
+        else
+            this.dataDiNascita = null;
     }
     
     /**
