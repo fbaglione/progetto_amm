@@ -80,6 +80,7 @@ CREATE TABLE posts (
 
 /* users */
 INSERT INTO users (id, username, password, nome, cognome, dataDiNascita, frase, urlImmagine) VALUES
+    (1, 'administrator', 'pass', NULL, NULL, NULL, NULL, NULL),
     (default, 'djanni', 'sonodjanni', 'Djanni', 'Randagio', '2011-01-01', 'Datemi cibo! Miao...', 'http://scontent.cdninstagram.com/t51.2885-15/s750x750/sh0.08/e35/18160279_1496958173662222_5345517778365317120_n.jpg?ig_cache_key=MTUwMjg0NzcwNzQ1ODY5NzI4Nw%3D%3D.2'),
     (default, 'riccardo', 'ric', 'Riccardo', 'Scateni', '1961-11-06', 'W Oculus Rift!', 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/10c/3d8/1556a8a.jpg'),
     (default, 'davide', 'ammprogetto', 'Davide', 'Spano', '2011-01-01', 'Do or do not. There is no try.', 'https://i1.rgstatic.net/ii/profile.image/AS%3A278717961130010%401443462948368_l/Lucio_Spano.png'),

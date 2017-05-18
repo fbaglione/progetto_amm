@@ -56,25 +56,29 @@ public class Gruppo extends HttpServlet {
 
             if(groupParam != null){
                 
-                // utente richiesto
+                // Gruppo richiesto
                 groupID = Integer.parseInt(groupParam);
+                
+                // dati gruppo bacheca
+                Group group = (Group) GroupFactory.getInstance().getGroupById(groupID);
+                request.setAttribute("group", group);
+
+                // Appartenenza utente loggato al gruppo
+                request.setAttribute("following", GroupFactory.getInstance().belongsToGroup((User)request.getAttribute("loggedUser"), group));
+
+                // lista posts
+                List<Post> posts = PostFactory.getInstance().getPostBacheca(group);
+                request.setAttribute("posts", posts);
+
+                // redirect bacheca
+                request.getRequestDispatcher("group.jsp").forward(request, response);
             }
             else {
                 
-                // user loggato
-                groupID = (int) session.getAttribute("userID"); 
+                //Gruppo richiesto inesistente
+                response.getWriter().println("<h1> La risorsa richiesta non è disponibile! </h1>");
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
-            
-            // dati gruppo bacheca
-            Group group = (Group) GroupFactory.getInstance().getGroupById(groupID);
-            request.setAttribute("group", group);
-            
-            // lista posts
-            List<Post> posts = PostFactory.getInstance().getPostBacheca(group);
-            request.setAttribute("posts", posts);
-            
-            // redirect bacheca
-            request.getRequestDispatcher("group.jsp").forward(request, response);
         }
         else {
             

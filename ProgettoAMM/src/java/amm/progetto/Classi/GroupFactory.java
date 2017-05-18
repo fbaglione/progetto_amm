@@ -108,6 +108,42 @@ public class GroupFactory {
         
         return listaGroup;
     }
+    
+    /**
+     * Permette di verificare che un user appartenga ad un gruppo
+     * @param user utente
+     * @param group gruppo di appartenenza
+     * @return boolean appartenenza di user al group
+     */
+    public boolean belongsToGroup(User user, Group group) {
+                
+        boolean belongsToGroup = false;
+        
+        // Caricamento utenti
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM membri_gruppo WHERE gruppo = ? AND membro = ?");
+            stmt.setInt(1, group.getId());
+            stmt.setInt(2, user.getId());
+            
+            ResultSet set = stmt.executeQuery();           
+            
+            if(set.next()) {
+
+                belongsToGroup = true;
+            }
+            
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+        
+        return belongsToGroup;
+    }
 
     /**
      * @return connectionString

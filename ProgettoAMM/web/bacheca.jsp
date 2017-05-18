@@ -41,10 +41,13 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    
-                    <div class="nuovoPost">
-                        <jsp:include page="nuovoPost.jsp"/>
-                    </div>
+                        
+                    <c:if test="${friendship}">
+                        <div class="nuovoPost">
+                            <jsp:include page="nuovoPost.jsp"/>
+                        </div>
+                    </c:if>
+
                     
                     <!-- sezione dei posts-->
                     <div id="listaPosts">

@@ -32,11 +32,21 @@
                     <div class="frase">
                         <img class="imgProfilo" src="${group.getUrlImmagine()}" alt="foto ${group.getNome()}" />
                         <div class="autore">${group.getNome()}</div>
+                        <c:choose>
+                            <c:when test="${following}">
+                            <div class="friendship"></div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="addFriendship"></div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     
-                    <div class="nuovoPost">
-                        <jsp:include page="nuovoPost.jsp"/>
-                    </div>
+                    <c:if test="${following}">
+                        <div class="nuovoPost">
+                            <jsp:include page="nuovoPost.jsp"/>
+                        </div>
+                    </c:if>
                     
                     <!-- sezione dei posts-->
                     <div id="listaPosts">
