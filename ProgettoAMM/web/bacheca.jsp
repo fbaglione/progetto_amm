@@ -4,16 +4,16 @@
 <html>
     <head>
         <title>Nerdbook</title>
-        
+
         <meta charset="UTF-8">
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Fabio Baglione">
         <meta name="keywords" content="social network nerd">
-        
+
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     </head>
-    
+
     <body>
         <div id="pagina">
 
@@ -22,10 +22,10 @@
 
             <!-- corpo della pagina -->
             <div id="divBody">
-                
+
                 <!-- submenu laterale -->
                 <jsp:include page="submenu.jsp"/>
-            
+
                 <!-- contenuto principale -->
                 <div class="cont">
                     <div class="frase">
@@ -34,21 +34,21 @@
                         <div class="contenuto">"${user.getFrase()}"</div>
                         <c:choose>
                             <c:when test="${friendship}">
-                            <div class="friendship"></div>
+                                <div class="friendship"></div>
                             </c:when>
                             <c:otherwise>
-                                <div class="addFriendship"></div>
-                            </c:otherwise>
-                        </c:choose>
+                                <a href="Friendship?user=${user.getId()}"><div class="addFriendship"></div></a>
+                                </c:otherwise>
+                            </c:choose>
                     </div>
-                        
+
                     <c:if test="${friendship}">
                         <div class="nuovoPost">
                             <jsp:include page="nuovoPost.jsp"/>
                         </div>
                     </c:if>
 
-                    
+
                     <!-- sezione dei posts-->
                     <div id="listaPosts">
 
@@ -57,6 +57,12 @@
                                 <div class="autore">
                                     <img class="profilePic" alt="foto ${post.getAutore().getNome()} ${post.getAutore().getCognome()}" src="${post.getAutore().getUrlImmagine()}">
                                     <div class="nome">${post.getAutore().getNome()} ${post.getAutore().getCognome()}</div>
+                                    <c:if test="${post.getGruppo() != null}">
+                                        <div class="gruppo">su ${post.getGruppo().getNome()}</div>
+                                    </c:if>
+                                    <c:if test="${post.isAdministrator(loggedUser) || adminPowers}">
+                                        <a class="del" href="EliminaPost?post=${post.getId()}">Elimina post</a>
+                                    </c:if>
                                 </div>
                                 <div class="contenuto">
                                     <c:if test="${post.postType == 'TEXT'}">

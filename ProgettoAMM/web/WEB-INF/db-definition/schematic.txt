@@ -2,7 +2,7 @@
     id              integer                 primary key, auto increment
     username        string (64)             unique
     password        string (256)            not null
-    nome            string (64)
+    nome            string (64)             not null
     cognome         string (64)
     dataDiNascita   date
     frase           string (1024)

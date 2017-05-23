@@ -33,6 +33,13 @@ public class User {
         return false;
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof User)) return false;
+        if(obj == this) return true;
+        return this.id == ((User) obj).id;
+    }
+    
     /**
      * @return id dell'utente
      */

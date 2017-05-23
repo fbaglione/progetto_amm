@@ -28,6 +28,26 @@
         <servlet-name>Gruppo</servlet-name>
         <servlet-class>amm.progetto.servlet.Gruppo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NuovoGruppo</servlet-name>
+        <servlet-class>amm.progetto.servlet.NuovoGruppo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Friendship</servlet-name>
+        <servlet-class>amm.progetto.servlet.Friendship</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GroupSubscription</servlet-name>
+        <servlet-class>amm.progetto.servlet.GroupSubscription</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminaGruppo</servlet-name>
+        <servlet-class>amm.progetto.servlet.EliminaGruppo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminaPost</servlet-name>
+        <servlet-class>amm.progetto.servlet.EliminaPost</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Bacheca</servlet-name>
         <url-pattern>/Bacheca</url-pattern>
@@ -55,6 +75,26 @@
     <servlet-mapping>
         <servlet-name>Gruppo</servlet-name>
         <url-pattern>/Gruppo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NuovoGruppo</servlet-name>
+        <url-pattern>/NuovoGruppo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Friendship</servlet-name>
+        <url-pattern>/Friendship</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GroupSubscription</servlet-name>
+        <url-pattern>/GroupSubscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminaGruppo</servlet-name>
+        <url-pattern>/EliminaGruppo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminaPost</servlet-name>
+        <url-pattern>/EliminaPost</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

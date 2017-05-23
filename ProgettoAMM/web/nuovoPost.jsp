@@ -7,7 +7,7 @@
     </div>
     <div>
         <label for="allegatoPost">Allegato (opzionale)</label>
-        <input type="text" name="allegatoPost" id="allegatoPost" />
+        <input type="url" name="allegatoPost" id="allegatoPost" />
     </div>
     <div>
         <input type="radio" name="tipologiaPost" value="TEXT" checked="checked" /> Testo

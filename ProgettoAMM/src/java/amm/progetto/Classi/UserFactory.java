@@ -77,7 +77,7 @@ public class UserFactory {
     }
 
     /**
-     * @return lista degli utenti del sistema
+     * @return lista degli utenti del sistema eccetto l'amministratore
      */
     public ArrayList<User> getListaUser() {
         
@@ -88,7 +88,7 @@ public class UserFactory {
             Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
             
             Statement stmt = conn.createStatement();
-            ResultSet set = stmt.executeQuery("SELECT * FROM users");
+            ResultSet set = stmt.executeQuery("SELECT * FROM users WHERE id != 0");
             
             while(set.next()) {
                 
@@ -177,7 +177,6 @@ public class UserFactory {
         
         boolean areFriends = false;
         
-        // Caricamento utente
         try {
             Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
             
@@ -205,27 +204,53 @@ public class UserFactory {
     }
     
     /**
+     * Permette ad un utente di seguirne un altro
+     * @param follower primo user
+     * @param followed user con cui si vuole avere una amicizia
+     */
+    public void addFriendship(User follower, User followed) {
+    
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO friendship "
+                    + "(follower, followed) VALUES "
+                    + "(?, ?),(?, ?)");
+            stmt.setInt(1, follower.getId());
+            stmt.setInt(2, followed.getId());
+            stmt.setInt(3, followed.getId());
+            stmt.setInt(4, follower.getId());
+            
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
      * Permette di modificare l'user con id specificato
-     *
      * @param user id e dati dell'utente da modificare
      */
     public void updateUser(User user) {
         
-        // Caricamento utenti
         try {
             Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
             
             PreparedStatement stmt = conn.prepareStatement("UPDATE users SET " + 
-                    "username = ?, password = ?, nome = ?, cognome = ?, dataDiNascita = ?, frase = ?, urlImmagine = ? " +
+                    "password = ?, nome = ?, cognome = ?, dataDiNascita = ?, frase = ?, urlImmagine = ? " +
                     "WHERE id = ?");
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPassword());
-            stmt.setString(3, user.getNome());
-            stmt.setString(4, user.getCognome());
-            stmt.setDate(5, user.getDataDiNascita());
-            stmt.setString(6, user.getFrase());
-            stmt.setString(7, user.getUrlImmagine());
-            stmt.setInt(8, user.getId());
+            stmt.setString(1, user.getPassword());
+            stmt.setString(2, user.getNome());
+            stmt.setString(3, user.getCognome());
+            stmt.setDate(4, user.getDataDiNascita());
+            stmt.setString(5, user.getFrase());
+            stmt.setString(6, user.getUrlImmagine());
+            stmt.setInt(7, user.getId());
             
             stmt.executeUpdate();
 
@@ -248,6 +273,7 @@ public class UserFactory {
         PreparedStatement stmt_posts = null;
         PreparedStatement stmt_friendship = null;
         PreparedStatement stmt_membri_gruppo = null;
+        PreparedStatement stmt_admin_gruppo = null;
         PreparedStatement stmt_users = null;
         
         try {
@@ -281,9 +307,9 @@ public class UserFactory {
 
                 // Sostituzione dell'amministratore del sito come admin dei gruppi
                 // di cui l'utente era amministratore
-                stmt_membri_gruppo = conn.prepareStatement("UPDATE gruppi SET administrator = 1 WHERE administrator = ?");
-                stmt_membri_gruppo.setInt(1, user.getId());
-                stmt_membri_gruppo.executeUpdate();
+                stmt_admin_gruppo = conn.prepareStatement("UPDATE gruppi SET administrator = 0 WHERE administrator = ?");
+                stmt_admin_gruppo.setInt(1, user.getId());
+                stmt_admin_gruppo.executeUpdate();
                 
                 // Eliminazione finale utente
                 stmt_users = conn.prepareStatement("DELETE FROM users WHERE id = ?");
@@ -308,6 +334,8 @@ public class UserFactory {
                     stmt_friendship.close();
                 if(stmt_membri_gruppo != null)
                     stmt_membri_gruppo.close();
+                if(stmt_admin_gruppo != null)
+                    stmt_admin_gruppo.close();
                 if(stmt_users != null)
                     stmt_users.close();
 

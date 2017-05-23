@@ -41,7 +41,7 @@ public class Gruppo extends HttpServlet {
         // Variabili menu
         request.setAttribute("users", UserFactory.getInstance().getListaUser());
         request.setAttribute("groups", GroupFactory.getInstance().getListaGroup());
-                
+        
         // Recupero della sessione
         HttpSession session = request.getSession(false);
 
@@ -49,6 +49,8 @@ public class Gruppo extends HttpServlet {
         
             // Utente autenticato
             request.setAttribute("loggedUser", (User) UserFactory.getInstance().getUserById((int) session.getAttribute("userID")));
+            // privilegi admin
+            request.setAttribute("adminPowers", ((User)request.getAttribute("loggedUser")).getId() == 0);
             
             // caricamento del gruppo richiesto nella get
             String groupParam = request.getParameter("group");
@@ -63,9 +65,12 @@ public class Gruppo extends HttpServlet {
                 Group group = (Group) GroupFactory.getInstance().getGroupById(groupID);
                 request.setAttribute("group", group);
 
-                // Appartenenza utente loggato al gruppo
+                // appartenenza utente loggato al gruppo
                 request.setAttribute("following", GroupFactory.getInstance().belongsToGroup((User)request.getAttribute("loggedUser"), group));
 
+                // utente attuale è admin del gruppo
+                request.setAttribute("groupAdmin", group.getAdmin().equals((User)request.getAttribute("loggedUser")));
+                
                 // lista posts
                 List<Post> posts = PostFactory.getInstance().getPostBacheca(group);
                 request.setAttribute("posts", posts);

@@ -43,7 +43,7 @@ public class GroupFactory {
         
         Group group = null;
         
-        // Caricamento utente
+        // Caricamento group
         try {
             Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
             
@@ -145,6 +145,123 @@ public class GroupFactory {
         return belongsToGroup;
     }
 
+    /**
+     * Aggiunge un nuovo gruppo
+     * @param group gruppo da creare
+     * @param admin user che sarà amministratore del gruppo
+     */
+    public void addGroup(Group group, User admin) {
+    
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO gruppi "
+                    + "(id, nome, urlImmagine, administrator) VALUES "
+                    + "(default, ?, ?, ?)");
+            stmt.setString(1, group.getNome());
+            stmt.setString(2, group.getUrlImmagine());
+            stmt.setInt(3, admin.getId());
+            
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
+     * Permette ad un utente di entrare in un gruppo
+     * @param user user che si vuole iscrivere
+     * @param group gruppo al quale si vuole iscrivere
+     */
+    public void addSubscription(User follower, Group gruppo) {
+    
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO membri_gruppo "
+                    + "(gruppo, membro) VALUES "
+                    + "(?, ?)");
+            stmt.setInt(1, gruppo.getId());
+            stmt.setInt(2, follower.getId());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
+     * Permette di eliminare il gruppo
+     *
+     * @param group da eliminare
+     */
+    public void deleteGroup(Group group) {
+        
+        PreparedStatement stmt_posts = null;
+        PreparedStatement stmt_subscriptions = null;
+        PreparedStatement stmt_group = null;
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+        
+            // Caricamento utenti
+            try {
+                 // Inizio transazione
+                conn.setAutoCommit(false);
+
+                // Eliminazione posts del gruppo
+                stmt_posts = conn.prepareStatement("DELETE FROM posts WHERE bacheca_gruppo = ?");
+                stmt_posts.setInt(1, group.getId());
+                stmt_posts.executeUpdate();
+                
+                // Eliminazione iscrizioni
+                stmt_subscriptions = conn.prepareStatement("DELETE FROM membri_gruppo WHERE gruppo = ?");
+                stmt_subscriptions.setInt(1, group.getId());
+                stmt_subscriptions.executeUpdate();
+
+                // Eliminazione finale gruppo
+                stmt_group = conn.prepareStatement("DELETE FROM gruppi WHERE id = ?");
+                stmt_group.setInt(1, group.getId());
+                stmt_group.executeUpdate();
+
+                conn.commit();
+
+            } catch (SQLException ex) {
+
+                // Errore SQL, rollback
+                if(conn != null)
+                    conn.rollback();
+
+                ex.printStackTrace();
+            } finally {
+
+                // Chiusura statements
+                if(stmt_posts != null)
+                    stmt_posts.close();
+                if(stmt_subscriptions != null)
+                    stmt_subscriptions.close();
+                if(stmt_group != null)
+                    stmt_group.close();
+
+                // Chiusura connessione
+                conn.setAutoCommit(true);
+                conn.close();
+            }
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     /**
      * @return connectionString
      */

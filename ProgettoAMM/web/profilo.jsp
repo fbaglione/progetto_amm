@@ -37,7 +37,7 @@
                         <form action="Profilo" method="post">
                             <div>
                                 <label for="nome">Nome</label>
-                                <input type="text" name="nome" id="nome" value="${user.getNome()}" />
+                                <input type="text" name="nome" id="nome" value="${user.getNome()}" required/>
                             </div>
 
                             <div>
@@ -73,7 +73,9 @@
                                 <div class="datiAggiornati">Dati aggiornati!</div>
                             </c:if>
                         </form>
-                        <a href="EliminaProfilo">Elimina profilo</a>
+                        <c:if test="${user.getId() != 0}">
+                            <a href="EliminaProfilo">Elimina profilo</a>
+                        </c:if>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@
     <div class="submenu">
         <div class="subtitle gruppi">
             Gruppi
-            <a class="iconaFunzione add" href="#"></a>
+            <a class="iconaFunzione add" href="NuovoGruppo"></a>
         </div>
         <ul>
             <c:forEach var="group" items="${groups}">

@@ -41,7 +41,6 @@ public class Bacheca extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         // Variabili menu
-        request.setAttribute("page", "bacheca");
         request.setAttribute("users", UserFactory.getInstance().getListaUser());
         request.setAttribute("groups", GroupFactory.getInstance().getListaGroup());
                 
@@ -52,6 +51,8 @@ public class Bacheca extends HttpServlet {
         
             // Utente autenticato
             request.setAttribute("loggedUser", (User) UserFactory.getInstance().getUserById((int) session.getAttribute("userID")));
+            // privilegi admin
+            request.setAttribute("adminPowers", ((User)request.getAttribute("loggedUser")).getId() == 0);
             
             // caricamento dell'user richiesto nella get
             String userParam = request.getParameter("user");
@@ -67,6 +68,10 @@ public class Bacheca extends HttpServlet {
                 // user loggato
                 userID = (int) session.getAttribute("userID"); 
             }
+            
+            // variabile menu
+            if(userID == (int) session.getAttribute("userID"))
+                request.setAttribute("page", "bacheca");
             
             // dati user bacheca
             User user = (User) UserFactory.getInstance().getUserById(userID);

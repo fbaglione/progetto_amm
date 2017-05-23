@@ -46,7 +46,14 @@
                     </div>
                     <div class="nuovoPost">
                         <div class="datiUtenti">
-                            Post sulla bacheca di ${user.getNome()} ${user.getCognome()}
+                            <c:choose>
+                                <c:when test="${user != null}">
+                                    Post sulla bacheca di ${user.getNome()} ${user.getCognome()}
+                                </c:when>
+                                <c:otherwise>
+                                    Post sulla bacheca di ${group.getNome()}
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                         <form action="NuovoPost" method="post">
 
@@ -61,7 +68,7 @@
                             <c:if test="${group != null}">
                                 <input type="hidden" name="groupID" value="${group.getId()}" />
                             </c:if>
-                            
+
                             <input type="hidden" name="conferma" value="true" />
 
                             <button type="submit">Invia post</button>

@@ -32,6 +32,16 @@ public class Post {
     private User autore;
     private String content;
     private String text;
+    private Group gruppo = null;
+    
+    /**
+     * Controlla l'admin del gruppo del post o il suo autore
+     * @param user user da controllare
+     * @return boolean se l'user è admin del post
+     */
+    public boolean isAdministrator(User user) {
+        return PostFactory.getInstance().isAdministrator(this.id, user);
+    }
     
     /**
      * @return id del post
@@ -101,5 +111,19 @@ public class Post {
      */
     public void setText(String text) {
         this.text = text;
+    }
+
+    /**
+     * @return gruppo in cui il post è stato postato
+     */
+    public Group getGruppo() {
+        return gruppo;
+    }
+
+    /**
+     * @param gruppo set del gruppo in cui il post è stato postato
+     */
+    public void setGruppo(Group gruppo) {
+        this.gruppo = gruppo;
     }
 }

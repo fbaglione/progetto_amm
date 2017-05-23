@@ -1,0 +1,5 @@
+Amministratore
+Stringere amicizia
+Iscrizione gruppo
+Nuovo gruppo
+Cancellazione gruppo

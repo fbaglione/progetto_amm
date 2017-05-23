@@ -322,6 +322,13 @@ nav li.active{
     top: 4px;
     background: url('img/emptyHeart.png');
 }
+
+.frase .del {
+    float: right;
+    position: relative;
+    right: -18px;
+    top: 28px;
+}
 /* nuovo post */
 .nuovoPost {
     width: auto;
@@ -371,15 +378,25 @@ nav li.active{
 }
 .post .autore .nome {
     float: left;
-    padding: 16px;
+    padding-left: 16px;
+    padding-top: 16px;
     font: 16px/36px "Roboto", sans-serif;
     font-weight: bold;
+}
+.post .autore .gruppo {
+    float: left;
+    padding-top: 16px;
+    padding-left: 4px;
+    font: 12px/36px "Roboto", sans-serif;
 }
 .post .autore .profilePic {
     float: left;
     width: 56px;
     height: 56px;
     box-shadow: 0 0 8px rgba(0,0,0,.3);
+}
+.post .autore .del {
+    float: right;
 }
 .post .contenuto {
     border-top: 1px dotted #bababa;
