@@ -117,6 +117,52 @@ public class UserFactory {
     }
 
     /**
+     * Permette di ricaercare gli utenti in base al loro nome o cognome
+     * La ricerca e' case insensitive
+     * @param ricerca stringa da ricercare nel nome e congnome
+     * @return lista degli utenti cercati
+     */
+    public ArrayList<User> getListaUser(String ricerca) {
+        
+        ArrayList<User> listaUser = new ArrayList<>();
+        
+        // Caricamento utenti
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, connectionUser, connectionPassword);
+            
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE id != 0 AND UPPER(nome) LIKE UPPER(?) OR UPPER(cognome) LIKE UPPER(?)");
+            stmt.setString(1, "%" + ricerca + "%");
+            stmt.setString(2, "%" + ricerca + "%");
+            
+            ResultSet set = stmt.executeQuery();
+            
+            while(set.next()) {
+                
+                User user = new User();
+                user.setId(set.getInt("id"));
+                user.setUsername(set.getString("username"));
+                user.setPassword(set.getString("password"));
+                user.setNome(set.getString("nome"));
+                user.setCognome(set.getString("cognome"));
+                user.setDataDiNascita(set.getDate("dataDiNascita"));
+                user.setFrase(set.getString("frase"));
+                user.setUrlImmagine(set.getString("urlImmagine"));
+                
+                listaUser.add(user);
+            }
+            
+            stmt.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+        }
+        
+        return listaUser;
+    }
+    
+    /**
      * Permette di ottenere l'utente con username e password specificati
      *
      * @param username username dell'utente richiesto

@@ -41,7 +41,6 @@ public class Bacheca extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         // Variabili menu
-        request.setAttribute("users", UserFactory.getInstance().getListaUser());
         request.setAttribute("groups", GroupFactory.getInstance().getListaGroup());
                 
         // Recupero della sessione

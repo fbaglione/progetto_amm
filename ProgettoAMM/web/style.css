@@ -167,6 +167,10 @@ input[type=radio] {
 }
 
 /* colonna laterale */
+.submenu {
+    margin-bottom: 16px;
+}
+
 .submenu ul {
     margin: 0px 0px 8px 0px;
     padding-left: 8px;
@@ -198,6 +202,31 @@ input[type=radio] {
     position: relative;
     bottom: -4px;
     background: url('img/addGruppo.png');
+}
+
+#ricUtentiInput {
+    float: left;
+    padding-top: 8px;
+    width: 150px;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+#ricUtentiInput::placeholder {
+    font-style: italic;
+}
+
+#ricUtentiButton {
+float: right;
+    width: 24px;
+    height: 24px;
+    background: url(img/search.png);
+    box-shadow: none;
+    margin-top: 8px;
+}
+
+#ricUtentiRes {
+    clear: both;
 }
 
 /* Icone decorative che non forniscono ulteriore informazione */

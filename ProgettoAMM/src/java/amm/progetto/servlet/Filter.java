@@ -5,8 +5,10 @@
  */
 package amm.progetto.servlet;
 
+import amm.progetto.Classi.User;
+import amm.progetto.Classi.UserFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author DatrhiilPC
  */
-public class SearchFriends extends HttpServlet {
+public class Filter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,18 +31,28 @@ public class SearchFriends extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SearchFriends</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SearchFriends at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        String command = request.getParameter("cmd");
+        if (command != null) 
+        {
+            // Ricava l'operazione da eseguire
+            if (command.equals("search")) 
+            {
+                // Esegue la ricerca
+                List<User> listaUtenti = UserFactory.getInstance().getListaUser(request.getParameter("q"));
+                //(request.getParameter("nomeGattoCercato"));
+                
+                // Caricamento lista
+                request.setAttribute("listaUtenti", listaUtenti);
+                
+                // Impostazioni dell'header per la restituzione di json
+                response.setContentType("application/json");
+                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+                
+                // Caricamento jsp per la formattazione json
+                request.getRequestDispatcher("filter.jsp").forward(request, response);
+            }
         }
     }
 

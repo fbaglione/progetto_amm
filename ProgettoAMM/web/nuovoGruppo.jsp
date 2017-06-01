@@ -12,6 +12,8 @@
         <meta name="keywords" content="social network nerd">
 
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/filter.js"></script>
     </head>
 
     <body>

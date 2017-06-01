@@ -48,6 +48,10 @@
         <servlet-name>EliminaPost</servlet-name>
         <servlet-class>amm.progetto.servlet.EliminaPost</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Filter</servlet-name>
+        <servlet-class>amm.progetto.servlet.Filter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Bacheca</servlet-name>
         <url-pattern>/Bacheca</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>EliminaPost</servlet-name>
         <url-pattern>/EliminaPost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Filter</servlet-name>
+        <url-pattern>/filter.json</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

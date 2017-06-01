@@ -5,15 +5,14 @@
         <!-- le img di questa sezione sono considerate informazioni e non semplici decorazioni
              poiché contengono l'immagine della persona o gruppo e consentono di identificarli tramite
              tramite una icona anziché solo tramite testo -->
-        <div class="subtitle persone">Persone</div>
-        <ul>
-            <c:forEach var="user" items="${users}">
-                <li>
-                    <img src="${user.getUrlImmagine()}" alt="foto ${user.getNome()} ${user.getCognome()}" />
-                    <a href="Bacheca?user=${user.getId()}">${user.getNome()} ${user.getCognome()}</a>
-                </li>
-            </c:forEach>
-        </ul>
+        <div class="subtitle persone">Utenti</div>
+        <div id="ricUtenti">
+            <input id="ricUtentiInput" type="text" placeholder="ricerca utenti" value="">
+            <button id="ricUtentiButton"></button>
+        </div>
+        <div id="ricUtentiRes">
+            <ul></ul>
+        </div>
     </div>
     <div class="submenu">
         <div class="subtitle gruppi">

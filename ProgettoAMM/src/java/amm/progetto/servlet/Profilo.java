@@ -41,7 +41,6 @@ public class Profilo extends HttpServlet {
 
         // Variabili della pagina
         request.setAttribute("page", "profilo");
-        request.setAttribute("users", UserFactory.getInstance().getListaUser());
         request.setAttribute("groups", GroupFactory.getInstance().getListaGroup());
 
         // Recupero della sessione

@@ -88,7 +88,7 @@ INSERT INTO friendship (follower, followed) VALUES
 
 /* gruppi */
 INSERT INTO gruppi (id, nome, urlImmagine, administrator) VALUES
-    (default, 'Mongolfieristi', 'img/mongolfieristi.png', 3),
+    (default, 'Mongolfieristi', 'http://lh3.ggpht.com/_BAiLdk3ZrzI/TJuGzXOu0YI/AAAAAAAAHfI/L143FFE4uqM/baloon%20festival%20ferraraDSC_0805_thumb%5B3%5D.jpg?imgmax=800', 3),
     (default, 'Animali', 'http://r.ddmcdn.com/s_f/o_1/cx_692/cy_253/cw_1472/ch_1472/w_720/APL/uploads/2014/12/aplive-african-watering-hole-cam.jpg', 1),
     (default, 'Professori', 'http://harrypottergenerationweare.weebly.com/uploads/2/5/8/7/25879359/8291598.gif', 2);
 
