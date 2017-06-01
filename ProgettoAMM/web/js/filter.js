@@ -54,6 +54,7 @@ $(document).ready(function () {
     };
 
     $("#ricUtentiButton").click(funRicerca);
-    $("#ricUtentiInput").change(funRicerca);
+    $("#ricUtentiInput").keyup(funRicerca);
+    //$("#ricUtentiInput").change(funRicerca);
 });
 
