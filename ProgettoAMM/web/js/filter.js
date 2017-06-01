@@ -55,6 +55,8 @@ $(document).ready(function () {
 
     $("#ricUtentiButton").click(funRicerca);
     $("#ricUtentiInput").keyup(funRicerca);
+    
+    // versione piu' "leggera" che si attiva solo con l'invio o l'unfocus
     //$("#ricUtentiInput").change(funRicerca);
 });
 
